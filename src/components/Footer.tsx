@@ -14,9 +14,8 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xl font-bold tracking-tighter">
-                    M5 Visa Advisors <span className="text-brand">(OPC)</span>
+                    M5 Visa Advisors (OPC Private Limited)
                   </span>
-                  <span className="text-xs font-medium text-white/70">Private Limited</span>
                 </div>
               </div>
             </Link>
@@ -60,7 +59,7 @@ export default function Footer() {
           <div>
             <h4 className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-10">Our Locations</h4>
             <ul className="space-y-5">
-              {['Suryapet (HO)', 'Hyderabad', 'London (UK)'].map((city) => (
+              {['Suryapet (Head Office)', 'Hyderabad', 'London (UK)'].map((city) => (
                 <li key={city}>
                   <a href="#" className="text-white/40 hover:text-white transition-colors text-xs font-bold uppercase tracking-widest">{city}</a>
                 </li>

@@ -70,7 +70,7 @@ export default function About() {
                 
                 <div className="flex items-center space-x-5">
                   <div className="w-14 h-14 rounded-2xl bg-white p-1 shadow-xl flex items-center justify-center transform group-hover:rotate-6 transition-transform">
-                    <img src="/logo.jpeg" alt="M5" className="w-full h-full object-contain" />
+                    <img src="/founder.jpeg" alt="Saketh Lonavath" className="w-full h-full object-cover rounded-xl" />
                   </div>
                   <div>
                     <div className="text-lg font-bold text-white uppercase tracking-wider">Saketh Lonavath</div>

@@ -44,8 +44,7 @@ export default function Navbar() {
               <span className="text-2xl font-bold tracking-tighter text-brand leading-none">
                 M5 <span className="text-accent">Visa</span> <span className="font-serif italic font-medium text-brand">Advisors</span>
               </span>
-              <span className="text-[10px] font-bold text-brand uppercase tracking-widest mt-1">Visa and Educational Consultants</span>
-              <span className="text-[9px] font-medium text-accent uppercase tracking-[0.2em]">Study Visas • Tourist Visas</span>
+              <span className="text-[9px] font-bold text-accent uppercase tracking-[0.2em]">Study Visas • Tourist Visas</span>
             </div>
           </Link>
 
