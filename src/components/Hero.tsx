@@ -76,7 +76,7 @@ export default function Hero() {
             
             {/* Features list */}
             <div className="flex flex-wrap gap-4 mb-12">
-              {['15+ Countries', '500+ Universities', 'End to End Assistance Guaranteed'].map((feature) => (
+              {['15+ Countries', '500+ Universities', 'End to End Assistance'].map((feature) => (
                 <div key={feature} className="flex items-center space-x-2 bg-brand/5 px-4 py-2 rounded-full border border-brand/10 shadow-sm transition-all hover:border-brand/20">
                   <span className="text-sm font-bold text-brand/80">{feature}</span>
                 </div>

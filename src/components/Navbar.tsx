@@ -36,8 +36,8 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="bg-white p-1.5 rounded-xl shadow-lg border border-brand/5 group-hover:rotate-6 transition-transform overflow-hidden flex items-center justify-center">
-              <img src="/logo.jpeg" alt="M5 Visa Advisors Logo" className="w-12 h-12 object-contain" />
+            <div className="bg-white p-1 rounded-2xl shadow-xl border border-brand/5 group-hover:rotate-6 transition-transform overflow-hidden flex items-center justify-center w-20 h-20">
+              <img src="/logo.jpeg" alt="M5 Visa Advisors Logo" className="w-full h-full object-contain" />
             </div>
             <div className="flex flex-col">
               <span className="text-2xl font-bold tracking-tighter text-brand leading-none">

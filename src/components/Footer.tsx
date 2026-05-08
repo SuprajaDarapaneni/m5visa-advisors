@@ -9,8 +9,8 @@ export default function Footer() {
           <div className="space-y-8">
             <Link to="/" className="flex flex-col space-y-1 group">
               <div className="flex items-center space-x-3">
-                <div className="bg-white p-2 rounded-xl shadow-2xl transition-transform group-hover:rotate-6 overflow-hidden flex items-center justify-center">
-                  <img src="/logo.jpeg" alt="Logo" className="w-12 h-12 object-contain" />
+                <div className="bg-white p-2 rounded-2xl shadow-xl border border-white/5 group-hover:rotate-6 transition-transform overflow-hidden flex items-center justify-center w-20 h-20">
+                  <img src="/logo.jpeg" alt="Logo" className="w-full h-full object-contain" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xl font-bold tracking-tighter">
