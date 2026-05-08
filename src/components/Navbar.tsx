@@ -31,7 +31,7 @@ export default function Navbar() {
               <Globe className="w-6 h-6 text-white stroke-[1.5px]" />
             </div>
             <span className="text-2xl font-bold tracking-tighter text-gray-900">
-              M5 Visa <span className="font-serif italic font-medium text-brand">Advisors</span>
+              M5 <span className="text-accent">Visa</span> <span className="font-serif italic font-medium text-brand">Advisors</span>
             </span>
           </Link>
 

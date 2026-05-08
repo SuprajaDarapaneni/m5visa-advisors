@@ -7,23 +7,34 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
           <div className="space-y-8">
-            <Link to="/" className="flex items-center space-x-3 group">
-              <div className="bg-brand p-2 rounded-xl shadow-2xl transition-transform group-hover:rotate-12">
-                <Globe className="w-6 h-6 text-white" />
+            <Link to="/" className="flex flex-col space-y-1 group">
+              <div className="flex items-center space-x-3">
+                <div className="bg-brand p-2 rounded-xl shadow-2xl transition-transform group-hover:rotate-12">
+                  <Globe className="w-6 h-6 text-white" />
+                </div>
+                <span className="text-xl font-bold tracking-tighter">
+                  M5 Visa Advisors <span className="text-brand">(OPC)</span>
+                </span>
               </div>
-              <span className="text-2xl font-bold tracking-tighter">
-                M5 Visa <span className="font-serif italic font-medium text-brand">Advisors</span>
-              </span>
+              <p className="text-white/90 font-medium text-sm">Private Limited</p>
             </Link>
-            <p className="text-white/40 leading-relaxed font-light text-sm max-w-xs">
+            <div className="space-y-1 pt-4">
+              <p className="text-accent font-bold uppercase tracking-[0.1em] text-xs">Visa and Educational Consultants</p>
+              <p className="text-white/50 font-light text-[11px] uppercase tracking-[0.2em]">Study Visas • Tourist Visas</p>
+            </div>
+            <p className="text-white/30 leading-relaxed font-light text-sm max-w-xs">
               Helping students find the best global education paths and manage visa processes easily.
             </p>
             <div className="flex space-x-4">
-              {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-accent hover:border-accent transition-all">
-                  <Icon className="w-4 h-4" />
-                </a>
-              ))}
+              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-accent hover:border-accent transition-all">
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a href="https://www.instagram.com/m5visaadvisors" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-accent hover:border-accent transition-all">
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a href="https://www.linkedin.com/company/m5-visa-advisors/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-accent hover:border-accent transition-all">
+                <Linkedin className="w-4 h-4" />
+              </a>
             </div>
           </div>
 
@@ -66,15 +77,10 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 text-center md:text-left">
           <p className="text-white/20 text-[10px] font-bold uppercase tracking-widest">
             © {new Date().getFullYear()} M5 Visa Advisors. Top quality service.
           </p>
-          <div className="flex space-x-12 text-[10px] font-bold uppercase tracking-widest text-white/20">
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
-            <a href="#" className="hover:text-white transition-colors">Sitemap</a>
-          </div>
         </div>
       </div>
     </footer>

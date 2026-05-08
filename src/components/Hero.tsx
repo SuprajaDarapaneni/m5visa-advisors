@@ -16,16 +16,16 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center space-x-2 bg-brand/5 border border-brand/10 rounded-full px-4 py-1.5 mb-8">
+            <div className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/20 rounded-full px-4 py-1.5 mb-8">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
               </span>
-              <span className="text-xs font-bold text-brand tracking-[0.2em] uppercase">Admissions Open Now</span>
+              <span className="text-xs font-bold text-accent tracking-[0.2em] uppercase">Admissions Open Now</span>
             </div>
             
             <h1 className="text-6xl lg:text-8xl font-medium text-gray-900 leading-[0.95] mb-8 tracking-tighter">
-              Empowering Your <br />
+              <span className="text-brand">Empowering</span> Your <br />
               <span className="text-brand font-serif italic">Global Dreams</span>
             </h1>
             
@@ -68,7 +68,7 @@ export default function Hero() {
                     />
                   ))}
                 </div>
-                <span className="text-xs font-bold tracking-tight">Talk to 50+ Experts Today</span>
+                <span className="text-xs font-bold tracking-tight">Talk to 25+ Experts Today</span>
               </div>
             
             {/* Features list */}
@@ -125,7 +125,7 @@ export default function Hero() {
                   <Globe className="w-6 h-6 text-brand" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-gray-900">10k+</div>
+                  <div className="text-2xl font-bold text-gray-900">250+</div>
                   <div className="text-sm text-gray-500 font-medium">Students Placed Globally</div>
                 </div>
               </div>

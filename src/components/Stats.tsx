@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 
 const stats = [
   { label: 'Partner Universities', value: '500+' },
-  { label: 'Successful Visas', value: '12,000+' },
-  { label: 'Expert Counselors', value: '50+' },
+  { label: 'Successful Visas', value: '250+' },
+  { label: 'Expert Counselors', value: '25+' },
 ];
 
 export default function Stats() {
