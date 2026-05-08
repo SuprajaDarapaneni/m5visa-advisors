@@ -68,13 +68,13 @@ export default function About() {
                   "Our mission at M5 Visa Advisors is to bridge the gap between global education dreams and reality. We believe every student deserves a chance to excel on the global stage with the right guidance."
                 </p>
                 
-                <div className="flex items-center space-x-5">
-                  <div className="w-14 h-14 rounded-2xl bg-white p-1 shadow-xl flex items-center justify-center transform group-hover:rotate-6 transition-transform">
-                    <img src="/founder.jpeg" alt="Saketh Lonavath" className="w-full h-full object-cover rounded-xl" />
+                <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-6 sm:space-y-0 sm:space-x-8">
+                  <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-3xl bg-white p-1.5 shadow-2xl flex-shrink-0 transform group-hover:rotate-3 transition-transform overflow-hidden">
+                    <img src="/founder.jpeg" alt="Saketh Lonavath" className="w-full h-full object-cover rounded-2xl" />
                   </div>
                   <div>
-                    <div className="text-lg font-bold text-white uppercase tracking-wider">Saketh Lonavath</div>
-                    <div className="text-[10px] font-bold text-accent uppercase tracking-[0.2em] mt-1 bg-white/10 px-2 py-0.5 rounded-md inline-block">Founder & Director</div>
+                    <div className="text-2xl font-bold text-white uppercase tracking-tight mb-1">Saketh Lonavath</div>
+                    <div className="text-[11px] font-bold text-accent uppercase tracking-[0.2em] bg-white/10 px-3 py-1.5 rounded-lg inline-block">Founder & Director</div>
                   </div>
                 </div>
               </div>
