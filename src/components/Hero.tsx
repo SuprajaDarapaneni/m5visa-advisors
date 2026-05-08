@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { ArrowRight, Play, CheckCircle2, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -16,44 +16,67 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center space-x-2 bg-brand/5 border border-brand/10 rounded-full px-4 py-1.5 mb-6">
+            <div className="inline-flex items-center space-x-2 bg-brand/5 border border-brand/10 rounded-full px-4 py-1.5 mb-8">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
               </span>
-              <span className="text-sm font-semibold text-brand tracking-wide uppercase">Admissions Open 2024-25</span>
+              <span className="text-xs font-bold text-brand tracking-[0.2em] uppercase">Admissions Open Now</span>
             </div>
             
-            <h1 className="text-5xl lg:text-7xl font-bold text-gray-900 leading-[1.1] mb-6">
+            <h1 className="text-6xl lg:text-8xl font-medium text-gray-900 leading-[0.95] mb-8 tracking-tighter">
               Empowering Your <br />
-              <span className="gradient-text">Global Ambitions</span>
+              <span className="text-brand font-serif italic">Global Dreams</span>
             </h1>
             
-            <p className="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed">
-              Unlock world-class education with M5 Visa Advisors. From university selection to visa approval, we navigate the complex journey for you.
+            <p className="text-xl text-gray-500 mb-10 max-w-lg leading-relaxed font-light">
+              Start your study abroad journey with M5 Visa Advisors. We help you pick the best universities and manage your visa process simply and easily.
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-10">
-              <Link 
-                to="/contact"
-                className="w-full sm:w-auto bg-brand text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl hover:shadow-brand/20 transition-all flex items-center justify-center group"
-              >
-                Book Free Consultation
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <button className="w-full sm:w-auto flex items-center justify-center space-x-3 px-8 py-4 rounded-full border border-gray-200 font-semibold text-gray-700 hover:bg-gray-50 transition-all">
-                <div className="bg-white shadow-md p-2 rounded-full">
-                  <Play className="w-4 h-4 text-brand fill-brand" />
+              <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-6">
+                <a 
+                  href="https://wa.me/919515354865?text=Hello%2C%20I%20would%20like%20to%20book%20a%20free%20consultation%20with%20M5%20Visa%20Advisors." 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto bg-brand text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl hover:shadow-brand/20 transition-all flex items-center justify-center group"
+                >
+                  Book Free Consultation
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+                <button className="w-full sm:w-auto flex items-center justify-center space-x-3 px-8 py-4 rounded-full border border-gray-200 font-semibold text-gray-700 hover:bg-gray-50 transition-all">
+                  <div className="bg-white shadow-md p-2 rounded-full">
+                    <Play className="w-4 h-4 text-brand fill-brand" />
+                  </div>
+                  <span>How it works</span>
+                </button>
+              </div>
+
+              {/* Consultation Badge */}
+              <div className="flex items-center space-x-3 mb-10 text-gray-500">
+                <div className="flex -space-x-3">
+                  {[
+                    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e',
+                    'https://images.unsplash.com/photo-1438761681033-6461ffad8d80',
+                    'https://images.unsplash.com/photo-1500648767791-00dcc994a43e'
+                  ].map((url, i) => (
+                    <img 
+                      key={i}
+                      src={`${url}?auto=format&fit=crop&q=80&w=100`}
+                      className="w-8 h-8 rounded-full border-2 border-white object-cover"
+                      alt="Expert"
+                      referrerPolicy="no-referrer"
+                    />
+                  ))}
                 </div>
-                <span>How it works</span>
-              </button>
-            </div>
+                <span className="text-xs font-bold tracking-tight">Talk to 50+ Experts Today</span>
+              </div>
             
-            <div className="flex flex-wrap gap-4">
+            {/* Features list */}
+            <div className="flex flex-wrap gap-4 mb-12">
               {['15+ Countries', '500+ Universities', '98% Visa Success'].map((feature) => (
-                <div key={feature} className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-500" />
-                  <span className="text-sm font-medium text-gray-600">{feature}</span>
+                <div key={feature} className="flex items-center space-x-2 bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                  <span className="text-xs font-bold text-gray-600">{feature}</span>
                 </div>
               ))}
             </div>
@@ -65,19 +88,38 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-8 border-white">
+            {/* Main Image */}
+            <div className="relative z-10 rounded-[4rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(31,38,135,0.15)] border-[1px] border-gray-100 max-w-[550px] ml-auto bg-gray-50">
               <img 
-                src="https://images.unsplash.com/photo-1523050335392-9as8c51b4724?auto=format&fit=crop&q=80&w=1000" 
-                alt="Student studying abroad"
-                className="w-full h-auto object-cover aspect-4/5 lg:aspect-square"
+                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1200" 
+                alt="Students studying"
+                className="w-full h-full object-cover aspect-[4/5] hover:scale-105 transition-transform duration-1000"
+                referrerPolicy="no-referrer"
               />
             </div>
+            
+            {/* Secondary Layered Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="absolute -left-12 top-1/4 z-20 hidden lg:block"
+            >
+              <div className="rounded-[2rem] overflow-hidden shadow-2xl border-[8px] border-white w-64 h-80 bg-gray-50">
+                <img 
+                  src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=800" 
+                  alt="Happy students together"
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            </motion.div>
             
             {/* Floating stats card */}
             <motion.div 
               animate={{ y: [0, -10, 0] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="absolute -bottom-6 -left-6 z-20 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 hidden sm:block"
+              className="absolute -bottom-10 right-10 z-30 bg-white p-6 rounded-2xl shadow-2xl border border-gray-100 hidden sm:block"
             >
               <div className="flex items-center space-x-4">
                 <div className="bg-brand-light p-3 rounded-xl">
@@ -87,6 +129,18 @@ export default function Hero() {
                   <div className="text-2xl font-bold text-gray-900">10k+</div>
                   <div className="text-sm text-gray-500 font-medium">Students Placed Globally</div>
                 </div>
+              </div>
+            </motion.div>
+
+            {/* Additional Floating Support Badge */}
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut", delay: 1 }}
+              className="absolute top-10 -right-4 z-30 bg-emerald-500 text-white p-4 rounded-2xl shadow-xl hidden lg:block"
+            >
+              <div className="flex items-center space-x-2">
+                <CheckCircle2 className="w-5 h-5" />
+                <span className="font-bold text-sm">Visa Guaranteed*</span>
               </div>
             </motion.div>
             

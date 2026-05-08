@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { ChevronRight, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -45,14 +45,35 @@ const destinations = [
     image: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&q=80&w=800',
     description: 'Famous for its engineering and technical courses, many German universities offer low to no tuition fees.'
   },
+  { 
+    id: 'new-zealand',
+    name: 'Study in New Zealand', 
+    universities: '8+ Institutions', 
+    image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=800',
+    description: 'New Zealand offers a world-class education system and a safe, welcoming environment for international students.'
+  },
+  { 
+    id: 'france',
+    name: 'Study in France', 
+    universities: '15+ Institutions', 
+    image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&q=80&w=800',
+    description: 'France is a global center for art, science, and philosophy, with highly ranked institutions in management and engineering.'
+  },
+  { 
+    id: 'sweden',
+    name: 'Study in Sweden', 
+    universities: '12+ Institutions', 
+    image: 'https://images.unsplash.com/photo-1509339022327-1e1e25360a41?auto=format&fit=crop&q=80&w=800',
+    description: 'Sweden is known for its unconventional thinking, innovation, and high-quality education system.'
+  },
 ];
 
 export default function DestinationsPage() {
   return (
     <div className="pt-24 min-h-screen">
       <div className="bg-gray-900 py-20 text-center">
-        <h1 className="text-4xl lg:text-6xl font-bold text-white mb-4">Study Destinations</h1>
-        <p className="text-gray-400 text-lg max-w-2xl mx-auto">Explore top educational hubs across the globe and find the perfect match for your future.</p>
+        <h1 className="text-4xl lg:text-6xl font-bold text-white mb-4">Countries to Study In</h1>
+        <p className="text-gray-400 text-lg max-w-2xl mx-auto">Look at the top places to study around the world and find the best one for you.</p>
       </div>
 
       <section className="py-24 bg-white">
@@ -68,7 +89,12 @@ export default function DestinationsPage() {
                 className="bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-xl shadow-gray-100/50 hover:shadow-2xl transition-all h-full flex flex-col"
               >
                 <div className="h-64 relative">
-                  <img src={country.image} alt={country.name} className="w-full h-full object-cover" />
+                  <img 
+                    src={country.image} 
+                    alt={country.name} 
+                    className="w-full h-full object-cover" 
+                    referrerPolicy="no-referrer"
+                  />
                   <div className="absolute top-6 left-6">
                     <span className="bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold text-brand uppercase tracking-wider">
                       {country.universities}
@@ -94,7 +120,7 @@ export default function DestinationsPage() {
                     to={`/destinations/${country.id}`}
                     className="inline-flex items-center justify-center bg-brand text-white font-bold py-4 rounded-2xl hover:bg-brand/90 transition-all hover:shadow-xl hover:shadow-brand/20"
                   >
-                    View Details
+                    Learn More
                     <ChevronRight className="ml-2 w-5 h-5" />
                   </Link>
                 </div>

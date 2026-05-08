@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Quote, Star } from 'lucide-react';
 
 const reviews = [
@@ -56,7 +56,7 @@ export default function Testimonials() {
               </p>
               
               <div className="flex items-center space-x-4">
-                <img src={review.image} alt={review.name} className="w-12 h-12 rounded-full object-cover" />
+                <img src={review.image} alt={review.name} className="w-12 h-12 rounded-full object-cover" referrerPolicy="no-referrer" />
                 <div>
                   <div className="font-bold text-gray-900">{review.name}</div>
                   <div className="text-xs text-gray-500 font-medium">{review.university}</div>

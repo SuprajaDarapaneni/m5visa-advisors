@@ -1,102 +1,124 @@
-import { motion } from 'motion/react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 export default function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    country: 'Select Destination'
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const message = `*M5 Visa Advisors Inquiry*%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Phone:* ${formData.phone}%0A*Country:* ${formData.country}`;
+    const whatsappUrl = `https://wa.me/919515354865?text=${message}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
-    <section id="contact" className="py-24 bg-white">
+    <section id="contact" className="py-32 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gray-900 rounded-[3rem] overflow-hidden shadow-2xl relative">
-          <div className="absolute top-0 right-0 w-1/3 h-full bg-brand/10 -skew-x-12 hidden lg:block" />
+        <div className="bg-[#0A0A0A] rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] relative border border-white/5">
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-bl from-brand/20 to-transparent -skew-x-12 hidden lg:block" />
           
-          <div className="grid lg:grid-cols-2">
-            <div className="p-8 lg:p-16 text-white">
-              <h2 className="text-3xl lg:text-5xl font-bold mb-6">Ready to Start Your Journey?</h2>
-              <p className="text-gray-400 mb-12 text-lg">
-                Book a free session with our global education experts and get personalized guidance for your study abroad dreams.
+          <div className="grid lg:grid-cols-2 relative z-10">
+            <div className="p-12 lg:p-24 text-white">
+              <h2 className="text-xs font-bold text-accent uppercase tracking-[0.3em] mb-8">Get In Touch</h2>
+              <h3 className="text-5xl lg:text-7xl font-medium mb-10 leading-tight">
+                Start Your <br />
+                <span className="font-serif italic text-white/50">New Story</span>
+              </h3>
+              <p className="text-white/30 mb-16 text-xl font-light leading-relaxed max-w-md">
+                Book a free talk with our experts to plan your study abroad future.
               </p>
               
-              <div className="space-y-8">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-brand/20 p-3 rounded-xl border border-brand/30">
-                    <Phone className="w-6 h-6 text-brand" />
+              <div className="space-y-10">
+                <div className="flex items-center space-x-6">
+                  <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-accent">
+                    <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold uppercase tracking-wider text-brand">Call Us</div>
-                    <div className="text-xl">+91 95153 54865</div>
-                    <div className="text-xl">+91 83330 75544</div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-1">Inquiry</div>
+                    <div className="text-lg font-medium">+91 95153 54865</div>
                   </div>
                 </div>
                 
-                <div className="flex items-start space-x-4">
-                  <div className="bg-emerald-500/20 p-3 rounded-xl border border-emerald-500/30">
-                    <Mail className="w-6 h-6 text-emerald-500" />
+                <div className="flex items-center space-x-6 text-white">
+                  <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-brand">
+                    <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold uppercase tracking-wider text-emerald-500">Email Us</div>
-                    <div className="text-xl">m5visaadvisors@gmail.com</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="bg-accent/20 p-3 rounded-xl border border-accent/30">
-                    <MapPin className="w-6 h-6 text-accent" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold uppercase tracking-wider text-accent">Head Office</div>
-                    <div className="text-lg">60 feet road, Suryapet, Telangana, 508213</div>
-                    <div className="text-sm text-gray-400 mt-1">Branch: Hyderabad, Telangana</div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-1">Direct</div>
+                    <div className="text-lg font-medium">m5visaadvisors@gmail.com</div>
                   </div>
                 </div>
               </div>
             </div>
             
-            <div className="p-8 lg:p-16 bg-white m-4 lg:m-8 rounded-[2rem]">
-              <form className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2">Full Name</label>
+            <div className="p-8 lg:p-20 lg:m-8">
+              <div className="bg-white p-10 lg:p-14 rounded-[3rem] shadow-2xl">
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Your Name</label>
                     <input 
                       type="text" 
-                      className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-4 focus:ring-2 focus:ring-brand outline-none transition-all"
-                      placeholder="John Doe"
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      className="w-full border-b border-gray-100 py-4 focus:border-brand outline-none transition-all font-light text-lg"
+                      placeholder="Full Name"
                     />
                   </div>
-                  <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2">Email Address</label>
-                    <input 
-                      type="email" 
-                      className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-4 focus:ring-2 focus:ring-brand outline-none transition-all"
-                      placeholder="john@example.com"
-                    />
+                  
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Email Address</label>
+                      <input 
+                        type="email" 
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        className="w-full border-b border-gray-100 py-4 focus:border-brand outline-none transition-all font-light text-lg"
+                        placeholder="Email"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Phone</label>
+                      <input 
+                        type="tel" 
+                        required
+                        value={formData.phone}
+                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                        className="w-full border-b border-gray-100 py-4 focus:border-brand outline-none transition-all font-light text-lg"
+                        placeholder="Number"
+                      />
+                    </div>
                   </div>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">Phone Number</label>
-                  <input 
-                    type="tel" 
-                    className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-4 focus:ring-2 focus:ring-brand outline-none transition-all"
-                    placeholder="+91 00000 00000"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">Interested Country</label>
-                  <select className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-4 focus:ring-2 focus:ring-brand outline-none transition-all appearance-none">
-                    <option>Select Destination</option>
-                    <option>USA</option>
-                    <option>UK</option>
-                    <option>Canada</option>
-                    <option>Australia</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                
-                <button className="w-full bg-brand text-white py-4 rounded-xl font-bold text-lg hover:bg-brand/90 hover:shadow-xl hover:shadow-brand/20 transition-all flex items-center justify-center space-x-2">
-                  <span>Submit Inquiry</span>
-                  <Send className="w-5 h-5" />
-                </button>
-              </form>
+                  
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Destination</label>
+                    <select 
+                      value={formData.country}
+                      onChange={(e) => setFormData({...formData, country: e.target.value})}
+                      className="w-full border-b border-gray-100 py-4 focus:border-brand outline-none transition-all font-light text-lg appearance-none bg-transparent"
+                    >
+                      <option>Select Destination</option>
+                      <option>USA</option>
+                      <option>UK</option>
+                      <option>Canada</option>
+                      <option>Australia</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  
+                  <button type="submit" className="w-full bg-brand text-white py-6 rounded-full font-bold text-xs uppercase tracking-[0.2em] shadow-2xl shadow-brand/20 hover:-translate-y-1 transition-all flex items-center justify-center space-x-3">
+                    <span>Submit Inquiry</span>
+                    <Send className="w-4 h-4" />
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>

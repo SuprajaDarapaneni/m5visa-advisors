@@ -1,7 +1,6 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
 const stats = [
-  { label: 'Years of Excellence', value: '15+' },
   { label: 'Partner Universities', value: '500+' },
   { label: 'Successful Visas', value: '12,000+' },
   { label: 'Expert Counselors', value: '50+' },
@@ -9,28 +8,29 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="py-12 bg-white">
+    <section className="py-20 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[#0A0A0A] -z-10" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-brand rounded-[40px] p-8 lg:p-12 shadow-2xl shadow-brand/20">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="text-3xl lg:text-5xl font-extrabold text-white mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-brand-light/80 text-sm font-medium uppercase tracking-wider">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 border border-white/10 rounded-[3rem] overflow-hidden backdrop-blur-md">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className={`p-8 lg:p-14 text-center border-white/10 ${
+                index !== stats.length - 1 ? 'border-r sm:border-r-0 md:border-r' : ''
+              } ${index < 2 ? 'border-b md:border-b-0' : ''}`}
+            >
+              <div className="text-4xl lg:text-6xl font-serif text-accent mb-4 tracking-tighter italic">
+                {stat.value}
+              </div>
+              <div className="text-white/40 text-xs font-bold uppercase tracking-[0.25em]">
+                {stat.label}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

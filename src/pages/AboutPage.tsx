@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import About from '../components/About';
 import Stats from '../components/Stats';
 
@@ -8,8 +8,8 @@ export default function AboutPage() {
       <div className="bg-gray-900 py-24 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-brand/5 -skew-y-6 transform translate-y-12" />
         <div className="relative z-10">
-          <h1 className="text-4xl lg:text-6xl font-bold text-white mb-4">About Us</h1>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto px-4">Discover the story behind M5 Visa Advisors and our commitment to student success.</p>
+          <h1 className="text-4xl lg:text-6xl font-bold text-white mb-4">About Our Team</h1>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto px-4">Learn more about M5 Visa Advisors and how we help students succeed abroad.</p>
         </div>
       </div>
       

@@ -1,13 +1,13 @@
 import { useParams, Link } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { ChevronLeft, CheckCircle2, Globe, GraduationCap, MapPin, Search } from 'lucide-react';
 
 const destinationData: Record<string, any> = {
   usa: {
     name: 'United States of America',
     image: 'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?auto=format&fit=crop&q=80&w=1200',
-    title: 'Study in USA: The Land of Opportunities',
-    description: 'The United States is home to some of the world\'s most prestigious universities and offers a vast array of programs across all disciplines.',
+    title: 'Study in USA: Great Opportunities',
+    description: 'The United States has some of the best universities in the world and many different courses you can choose from.',
     features: ['Ivy League Institutions', 'Optional Practical Training (OPT)', 'STEM Extensions', 'Diverse Culture'],
     process: [
       { step: 'Research', text: 'Select universities that match your profile and career goals.' },
@@ -19,8 +19,8 @@ const destinationData: Record<string, any> = {
   uk: {
     name: 'United Kingdom',
     image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=1200',
-    title: 'Study in UK: Excellence in Education',
-    description: 'The UK has a long-standing reputation for academic excellence. Its degrees are recognized and respected worldwide.',
+    title: 'Study in UK: Top Education',
+    description: 'The UK is known for great teaching. A degree from the UK is respected all over the world.',
     features: ['World-Class Research', '2-Year Post Study Work Visa', 'Efficient 1-Year Masters', 'Rich History'],
     process: [
       { step: 'Search', text: 'Find courses that align with your professional aspirations.' },
@@ -54,6 +54,71 @@ const destinationData: Record<string, any> = {
       { step: 'COE', text: 'Receive your Confirmation of Enrolment.' },
       { step: 'Apply', text: 'Lodge your Subclass 500 Visa application.' }
     ]
+  },
+  ireland: {
+    name: 'Ireland',
+    image: 'https://images.unsplash.com/photo-1550186082-6607ec3a508b?auto=format&fit=crop&q=80&w=1200',
+    title: 'Study in Ireland: Land of Scholars',
+    description: 'Ireland is one of the most friendly and welcoming countries in the world, known for its high-quality research institutions.',
+    features: ['Hub for Tech Giants', '2-Year Stay Back Option', 'English Speaking Country', 'Global Recognition'],
+    process: [
+      { step: 'Shortlist', text: 'Identify the top universities in Dublin, Cork, or Galway.' },
+      { step: 'Portfolio', text: 'Prepare your academic and professional portfolio.' },
+      { step: 'Submit', text: 'Apply through the university portals or agents.' },
+      { step: 'Visa', text: 'Apply for the Irish D-type study visa.' }
+    ]
+  },
+  germany: {
+    name: 'Germany',
+    image: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&q=80&w=1200',
+    title: 'Study in Germany: Precision & Innovation',
+    description: 'Germany is a world leader in engineering and technology, offering many tuition-free programs for international students.',
+    features: ['Zero/Low Tuition Fees', 'Strong Industry Ties', '18-Month Job Search Visa', 'Cultural Center of Europe'],
+    process: [
+      { step: 'Uni-Assist', text: 'Submit requirements through the Uni-Assist portal.' },
+      { step: 'APS', text: 'Obtain the APS certificate for Indian students.' },
+      { step: 'Blocked Account', text: 'Set up the required financial blocked account.' },
+      { step: 'Appointment', text: 'Book your VFS appointment for the national visa.' }
+    ]
+  },
+  'new-zealand': {
+    name: 'New Zealand',
+    image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=1200',
+    title: 'Study in New Zealand: Quality Education',
+    description: 'New Zealand offers a stunning natural environment combined with world-class education and globally recognized degrees.',
+    features: ['NZQF Framework', 'Safe and Welcoming', '3-Year Post Study Work', 'Industry Placements'],
+    process: [
+      { step: 'Select', text: 'Choose from 8 top universities or various ITPs.' },
+      { step: 'Offer Letter', text: 'Apply and secure an unconditional offer.' },
+      { step: 'FTS', text: 'Understand the Funds Transfer Scheme for financials.' },
+      { step: 'E-Visa', text: 'Apply online for the New Zealand student visa.' }
+    ]
+  },
+  france: {
+    name: 'France',
+    image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&q=80&w=1200',
+    title: 'Study in France: Excellence in Management',
+    description: 'France is home to some of the best Business Schools in the world, offering a perfect blend of theory and practice.',
+    features: ['Top Business Schools', 'Strong Alumni Networks', 'CAF Housing Subsidy', 'Schengen Access'],
+    process: [
+      { step: 'Campus France', text: 'Create your account on the Campus France portal.' },
+      { step: 'Interviews', text: 'Attend the mandatory Campus France interview.' },
+      { step: 'Validation', text: 'Receive your Etudes en France validation.' },
+      { step: 'VFS', text: 'Submit your documents for the long-stay visa.' }
+    ]
+  },
+  sweden: {
+    name: 'Sweden',
+    image: 'https://images.unsplash.com/photo-1509339022327-1e1e25360a41?auto=format&fit=crop&q=80&w=1200',
+    title: 'Study in Sweden: Innovate Tomorrow',
+    description: 'Sweden is the birthplace of global brands like IKEA and Spotify, emphasizing creative thinking and sustainability.',
+    features: ['Innovation Hub', 'Work-Life Balance', 'Job Opportunities', 'Sustainability Focus'],
+    process: [
+      { step: 'Search', text: 'Find programs through the central UniversityAdmissions.se.' },
+      { step: 'Application', text: 'Submit one application for multiple universities.' },
+      { step: 'Fee Payment', text: 'Pay the application fee to process credits.' },
+      { step: 'Permit', text: 'Apply for the residence permit for studies.' }
+    ]
   }
 };
 
@@ -74,7 +139,7 @@ export default function DestinationDetail() {
     <div className="pt-20">
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-        <img src={data.image} alt={data.name} className="absolute inset-0 w-full h-full object-cover" />
+        <img src={data.image} alt={data.name} className="absolute inset-0 w-full h-full object-cover" referrerPolicy="no-referrer" />
         <div className="absolute inset-0 bg-gray-900/60" />
         <div className="relative z-10 text-center px-4">
           <motion.div
@@ -141,10 +206,15 @@ export default function DestinationDetail() {
             <div className="space-y-8">
               <div className="bg-gray-900 p-8 rounded-[2rem] text-white">
                 <h3 className="text-2xl font-bold mb-6">Need Assistance?</h3>
-                <p className="text-gray-400 mb-8">Our expert advisors are ready to help you with the step-by-step process of studying abroad.</p>
-                <Link to="/contact" className="block w-full bg-brand text-white text-center py-4 rounded-xl font-bold hover:bg-brand/90 transition-all shadow-lg shadow-brand/20">
+                <p className="text-gray-400 mb-8">Our expert advisors are ready to help you with the step-by-step process of studying abroad in {data.name}.</p>
+                <a 
+                  href={`https://wa.me/919515354865?text=I%20need%20assistance%20regarding%20studying%20in%20${encodeURIComponent(data.name)}.`} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block w-full bg-brand text-white text-center py-4 rounded-xl font-bold hover:bg-brand/90 transition-all shadow-lg shadow-brand/20"
+                >
                   Talk to an Expert
-                </Link>
+                </a>
               </div>
 
               <div className="bg-brand-light p-8 rounded-[2rem] border border-brand/10">

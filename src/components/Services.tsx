@@ -1,11 +1,12 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { 
   GraduationCap, 
   Search, 
   FileText, 
   PlaneTakeoff, 
   CreditCard, 
-  Briefcase 
+  Briefcase,
+  ShieldCheck
 } from 'lucide-react';
 
 const services = [
@@ -22,10 +23,16 @@ const services = [
     color: 'bg-purple-500',
   },
   {
-    title: 'Visa Assistance',
-    description: 'End-to-end support for visa applications, including mock interviews and document prep.',
-    icon: FileText,
+    title: 'Visa Services',
+    description: 'Comprehensive support for student visas, including documentation, filing, and mock interviews.',
+    icon: ShieldCheck,
     color: 'bg-emerald-500',
+  },
+  {
+    title: 'Post-Visa Support',
+    description: 'End-to-end support even after visa approval, ensuring a smooth transition to your new country.',
+    icon: FileText,
+    color: 'bg-indigo-500',
   },
   {
     title: 'Pre-Departure Brief',
@@ -39,41 +46,43 @@ const services = [
     icon: CreditCard,
     color: 'bg-pink-500',
   },
-  {
-    title: 'Career Support',
-    description: 'Post-arrival counseling and guidance on part-time work and internship opportunities.',
-    icon: Briefcase,
-    color: 'bg-cyan-500',
-  },
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 bg-gray-50">
+    <section id="services" className="py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-sm font-bold text-brand uppercase tracking-widest mb-4">Our Expertise</h2>
-          <h3 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Comprehensive Support for Your Journey</h3>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            From your first consultation to arriving at your dream campus, we are with you every step of the way.
-          </p>
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-20">
+          <div className="max-w-2xl">
+            <h2 className="text-xs font-bold text-accent uppercase tracking-[0.3em] mb-6">Expert Help</h2>
+            <h3 className="text-5xl lg:text-7xl font-medium text-gray-900 mb-8 leading-tight">
+              Best Advice for <br />
+              <span className="font-serif italic text-brand">Your Future</span>
+            </h3>
+            <p className="text-xl text-gray-500 font-light leading-relaxed">
+              We provide personal help to get into top universities abroad. We make sure every part of your application is good.
+            </p>
+          </div>
+          <div className="hidden lg:block pb-4">
+             <div className="text-6xl font-serif italic text-gray-100 uppercase tracking-tighter">Services</div>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-100 border border-gray-100 rounded-[3rem] overflow-hidden">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white p-8 rounded-3xl border border-gray-100 hover:shadow-xl hover:shadow-brand/5 transition-all group"
+              className="bg-white p-12 hover:bg-brand-light/20 transition-colors group cursor-pointer"
             >
-              <div className={`${service.color} w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                <service.icon className="w-7 h-7 text-white" />
+              <div className="mb-8">
+                <service.icon className="w-10 h-10 text-brand stroke-[1px]" />
               </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h4>
-              <p className="text-gray-600 leading-relaxed">
+              <h4 className="text-2xl font-serif text-gray-900 mb-4 group-hover:italic transition-all">{service.title}</h4>
+              <p className="text-gray-500 leading-relaxed font-light">
                 {service.description}
               </p>
             </motion.div>
