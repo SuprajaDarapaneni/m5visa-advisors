@@ -4,17 +4,8 @@ import { Menu, X, Globe, Phone, Mail, Instagram, Facebook } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -29,7 +20,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[1000] bg-white border-b border-gray-100">
+    <header className="sticky top-0 left-0 right-0 z-[1000] bg-white border-b border-gray-100 shadow-sm">
       <nav 
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4"
       >

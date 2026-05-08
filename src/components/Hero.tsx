@@ -74,9 +74,8 @@ export default function Hero() {
             {/* Features list */}
             <div className="flex flex-wrap gap-4 mb-12">
               {['15+ Countries', '500+ Universities', '98% Visa Success'].map((feature) => (
-                <div key={feature} className="flex items-center space-x-2 bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                  <span className="text-xs font-bold text-gray-600">{feature}</span>
+                <div key={feature} className="flex items-center space-x-2 bg-gray-50 px-4 py-2 rounded-full border border-gray-100 shadow-sm transition-all hover:border-brand/20">
+                  <span className="text-sm font-bold text-gray-700">{feature}</span>
                 </div>
               ))}
             </div>
