@@ -21,13 +21,13 @@ export default function Destinations() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
           <div className="max-w-xl">
             <h2 className="text-xs font-bold text-accent uppercase tracking-[0.3em] mb-6">Study Abroad</h2>
-            <h3 className="text-5xl lg:text-7xl font-medium text-brand-dark mb-0">
+            <h3 className="text-5xl lg:text-7xl font-medium text-brand mb-0">
               Top <span className="font-serif italic text-brand">Countries</span>
             </h3>
           </div>
           <Link 
             to="/destinations"
-            className="hidden md:flex items-center text-xs font-bold uppercase tracking-[0.2em] text-brand hover:text-brand-dark transition-colors mt-4 md:mt-0 px-8 py-3 border border-brand/10 rounded-full hover:bg-brand-light transition-all"
+            className="hidden md:flex items-center text-xs font-bold uppercase tracking-[0.2em] text-brand hover:shadow-lg transition-colors mt-4 md:mt-0 px-8 py-3 border border-brand/10 rounded-full hover:bg-brand-light transition-all"
           >
             Explore All <ChevronRight className="ml-2 w-4 h-4" />
           </Link>
@@ -49,7 +49,7 @@ export default function Destinations() {
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-brand-dark/90 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-linear-to-t from-brand/90 via-transparent to-transparent pointer-events-none" />
               
               <div className="absolute inset-0 flex flex-col justify-end p-12 transition-transform duration-500 group-hover:-translate-y-2">
                 <div className="text-[10px] font-bold text-white/60 uppercase tracking-[0.3em] mb-4">{country.universities}</div>

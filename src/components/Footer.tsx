@@ -74,13 +74,13 @@ export default function Footer() {
               <li className="flex flex-col space-y-3">
                 <div className="text-white/40 text-[10px] font-bold uppercase tracking-widest">Phone Numbers</div>
                 <div className="flex flex-col space-y-1">
-                  <a href="tel:+919515354865" className="text-sm font-medium hover:text-brand transition-colors">+91 95153 54865</a>
-                  <a href="tel:+918333075544" className="text-sm font-medium hover:text-brand transition-colors">+91 83330 75544</a>
+                  <a href="tel:+919515354865" className="text-sm font-medium hover:text-accent transition-colors">+91 95153 54865</a>
+                  <a href="tel:+918333075544" className="text-sm font-medium hover:text-accent transition-colors">+91 83330 75544</a>
                 </div>
               </li>
               <li className="flex flex-col space-y-3">
                 <div className="text-white/40 text-[10px] font-bold uppercase tracking-widest">Support</div>
-                <a href="mailto:m5visaadvisors@gmail.com" className="text-sm font-medium hover:text-brand transition-colors">m5visaadvisors@gmail.com</a>
+                <a href="mailto:m5visaadvisors@gmail.com" className="text-sm font-medium hover:text-accent transition-colors">m5visaadvisors@gmail.com</a>
               </li>
             </ul>
           </div>

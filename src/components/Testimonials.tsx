@@ -25,7 +25,7 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-sm font-bold text-accent uppercase tracking-widest mb-4">Success Stories</h2>
-          <h3 className="text-4xl font-bold text-brand-dark uppercase tracking-tight">What Our Students Say</h3>
+          <h3 className="text-4xl font-bold text-brand uppercase tracking-tight">What Our Students Say</h3>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -48,7 +48,7 @@ export default function Testimonials() {
                 ))}
               </div>
               
-              <p className="text-brand-dark/70 italic mb-8 leading-relaxed">
+              <p className="text-brand/70 italic mb-8 leading-relaxed">
                 "{review.text}"
               </p>
               
@@ -57,8 +57,8 @@ export default function Testimonials() {
                   {review.name.charAt(0)}
                 </div>
                 <div>
-                  <div className="font-bold text-brand-dark">{review.name}</div>
-                  <div className="text-xs text-brand-dark/40 font-medium">Study in {review.country}</div>
+                  <div className="font-bold text-brand">{review.name}</div>
+                  <div className="text-xs text-brand/40 font-medium">Study in {review.country}</div>
                 </div>
               </div>
             </motion.div>

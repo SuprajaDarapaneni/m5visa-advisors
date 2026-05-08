@@ -8,11 +8,21 @@ export default function Navbar() {
   const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
+    if (location.hash) {
+      const element = document.getElementById(location.hash.slice(1));
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location.pathname, location.hash]);
 
   const navLinks = [
     { name: 'Home', href: '/' },
+    { name: 'How it Works', href: '/#how-it-works' },
     { name: 'Destinations', href: '/destinations' },
     { name: 'Services', href: '/services' },
     { name: 'About Us', href: '/about' },

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function Hero() {
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
+    <section className="relative pt-6 pb-20 lg:pt-12 lg:pb-32 overflow-hidden bg-white">
       {/* Background Ornaments */}
       <div className="absolute top-0 right-0 -z-10 w-1/2 h-full bg-brand-light/30 rounded-bl-[100px] hidden lg:block" />
       <div className="absolute top-1/4 left-10 -z-10 w-64 h-64 bg-accent/5 blur-3xl rounded-full" />
@@ -43,12 +43,15 @@ export default function Hero() {
                   Book Free Consultation
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
-                <button className="w-full sm:w-auto flex items-center justify-center space-x-3 px-8 py-4 rounded-full border border-brand/10 font-semibold text-brand hover:bg-brand/5 transition-all">
+                <a 
+                  href="#how-it-works"
+                  className="w-full sm:w-auto flex items-center justify-center space-x-3 px-8 py-4 rounded-full border border-brand/10 font-semibold text-brand hover:bg-brand/5 transition-all"
+                >
                   <div className="bg-white shadow-md p-2 rounded-full">
                     <Play className="w-4 h-4 text-brand fill-brand" />
                   </div>
                   <span>How it works</span>
-                </button>
+                </a>
               </div>
 
               {/* Consultation Badge */}

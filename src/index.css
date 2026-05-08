@@ -5,15 +5,15 @@
   --font-sans: "Outfit", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Fraunces", serif;
   --color-brand: #20538D;
-  --color-brand-dark: #123358;
+  --color-brand-dark: #20538D;
   --color-brand-light: #F0F4F8;
   --color-accent: #F2B41C;
-  --color-charcoal: #123358;
+  --color-charcoal: #20538D;
 }
 
 @layer base {
   body {
-    @apply font-sans antialiased text-charcoal bg-[#FCFCFC];
+    @apply font-sans antialiased text-brand bg-[#FCFCFC];
   }
   
   h1, h2, h3, h4, h5, h6 {

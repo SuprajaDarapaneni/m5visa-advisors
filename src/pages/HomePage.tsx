@@ -5,6 +5,7 @@ import Services from '../components/Services';
 import Destinations from '../components/Destinations';
 import Testimonials from '../components/Testimonials';
 import ContactForm from '../components/ContactForm';
+import HowItWorks from '../components/HowItWorks';
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
       <Hero />
       <Stats />
       <About />
+      <HowItWorks />
       <Destinations />
       <Services />
       <Testimonials />

@@ -15,7 +15,7 @@ export default function ServicesPage() {
       
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-brand-dark rounded-[3rem] p-12 lg:p-20 text-center relative overflow-hidden">
+          <div className="bg-brand rounded-[3rem] p-12 lg:p-20 text-center relative overflow-hidden">
             <div className="relative z-10">
                 <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6 italic">Ready to get started?</h2>
                 <p className="text-brand-light/60 text-lg mb-10 max-w-xl mx-auto">Book a slot for a personalized counseling session with our experts today.</p>
