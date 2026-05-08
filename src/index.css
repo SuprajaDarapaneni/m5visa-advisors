@@ -5,10 +5,10 @@
   --font-sans: "Outfit", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Fraunces", serif;
   --color-brand: #20538D;
-  --color-brand-dark: #163B66;
+  --color-brand-dark: #123358;
   --color-brand-light: #F0F4F8;
   --color-accent: #F2B41C;
-  --color-charcoal: #1A1A1A;
+  --color-charcoal: #123358;
 }
 
 @layer base {

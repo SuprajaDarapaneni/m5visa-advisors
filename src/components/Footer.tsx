@@ -1,22 +1,24 @@
 import { Link } from 'react-router-dom';
-import { Globe, Facebook, Twitter, Instagram, Linkedin, Mail, Phone } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0A0A0A] pt-32 pb-16 text-white overflow-hidden">
+    <footer className="bg-brand pt-32 pb-16 text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
           <div className="space-y-8">
             <Link to="/" className="flex flex-col space-y-1 group">
               <div className="flex items-center space-x-3">
-                <div className="bg-brand p-2 rounded-xl shadow-2xl transition-transform group-hover:rotate-12">
-                  <Globe className="w-6 h-6 text-white" />
+                <div className="bg-white p-2 rounded-xl shadow-2xl transition-transform group-hover:rotate-6 overflow-hidden flex items-center justify-center">
+                  <img src="/logo.jpeg" alt="Logo" className="w-12 h-12 object-contain" />
                 </div>
-                <span className="text-xl font-bold tracking-tighter">
-                  M5 Visa Advisors <span className="text-brand">(OPC)</span>
-                </span>
+                <div className="flex flex-col">
+                  <span className="text-xl font-bold tracking-tighter">
+                    M5 Visa Advisors <span className="text-brand">(OPC)</span>
+                  </span>
+                  <span className="text-xs font-medium text-white/70">Private Limited</span>
+                </div>
               </div>
-              <p className="text-white/90 font-medium text-sm">Private Limited</p>
             </Link>
             <div className="space-y-1 pt-4">
               <p className="text-accent font-bold uppercase tracking-[0.1em] text-xs">Visa and Educational Consultants</p>
@@ -25,16 +27,23 @@ export default function Footer() {
             <p className="text-white/30 leading-relaxed font-light text-sm max-w-xs">
               Helping students find the best global education paths and manage visa processes easily.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-accent hover:border-accent transition-all">
-                <Facebook className="w-4 h-4" />
+            <div className="flex items-center space-x-4">
+              <a 
+                href="https://wa.me/918333075544?text=Hello%2C%20I%20would%20like%20to%20book%20a%20free%20guide." 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-brand text-white px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-brand/90 transition-all flex items-center space-x-2"
+              >
+                <span>Book Free Guide</span>
               </a>
-              <a href="https://www.instagram.com/m5visaadvisors" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-accent hover:border-accent transition-all">
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a href="https://www.linkedin.com/company/m5-visa-advisors/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-accent hover:border-accent transition-all">
-                <Linkedin className="w-4 h-4" />
-              </a>
+              <div className="flex space-x-3">
+                <a href="https://www.instagram.com/m5visaadvisors" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-accent hover:border-accent transition-all">
+                  <Instagram className="w-4 h-4" />
+                </a>
+                <a href="https://www.linkedin.com/company/m5-visa-advisors/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-accent hover:border-accent transition-all">
+                  <Linkedin className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </div>
 
@@ -51,7 +60,7 @@ export default function Footer() {
           <div>
             <h4 className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-10">Our Locations</h4>
             <ul className="space-y-5">
-              {['Suryapet (HO)', 'Hyderabad', 'Bangalore'].map((city) => (
+              {['Suryapet (HO)', 'Hyderabad', 'London (UK)'].map((city) => (
                 <li key={city}>
                   <a href="#" className="text-white/40 hover:text-white transition-colors text-xs font-bold uppercase tracking-widest">{city}</a>
                 </li>

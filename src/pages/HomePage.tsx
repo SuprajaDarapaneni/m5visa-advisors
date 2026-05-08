@@ -15,11 +15,11 @@ export default function HomePage() {
       <Destinations />
       <Services />
       <Testimonials />
-      <div className="bg-white py-12 border-t border-gray-100">
+      <div className="bg-white py-12 border-t border-brand/5">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <div className="inline-block px-4 py-1 bg-brand/10 rounded-full text-brand text-xs font-bold uppercase tracking-widest mb-4">Get Started</div>
-          <h2 className="text-4xl font-serif text-gray-900 mb-4 italic">Ready to Apply?</h2>
-          <p className="text-gray-500 font-light max-w-lg mx-auto">Fill out the form below or visit our office for a free talk about your future.</p>
+          <h2 className="text-4xl font-serif text-brand mb-4 italic">Ready to Apply?</h2>
+          <p className="text-brand/50 font-light max-w-lg mx-auto">Fill out the form below or visit our office for a free talk about your future.</p>
         </div>
       </div>
       <ContactForm />

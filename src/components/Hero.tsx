@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Play, CheckCircle2, Globe } from 'lucide-react';
+import { ArrowRight, Play, CheckCircle2, GraduationCap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Hero() {
@@ -24,12 +24,12 @@ export default function Hero() {
               <span className="text-xs font-bold text-accent tracking-[0.2em] uppercase">Admissions Open Now</span>
             </div>
             
-            <h1 className="text-6xl lg:text-8xl font-medium text-gray-900 leading-[0.95] mb-8 tracking-tighter">
+            <h1 className="text-6xl lg:text-8xl font-medium text-brand leading-[0.95] mb-8 tracking-tighter">
               <span className="text-brand">Empowering</span> Your <br />
               <span className="text-brand font-serif italic">Global Dreams</span>
             </h1>
             
-            <p className="text-xl text-gray-500 mb-10 max-w-lg leading-relaxed font-light">
+            <p className="text-xl text-brand/70 mb-10 max-w-lg leading-relaxed font-light">
               Start your study abroad journey with M5 Visa Advisors. We help you pick the best universities and manage your visa process simply and easily.
             </p>
             
@@ -43,7 +43,7 @@ export default function Hero() {
                   Book Free Consultation
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
-                <button className="w-full sm:w-auto flex items-center justify-center space-x-3 px-8 py-4 rounded-full border border-gray-200 font-semibold text-gray-700 hover:bg-gray-50 transition-all">
+                <button className="w-full sm:w-auto flex items-center justify-center space-x-3 px-8 py-4 rounded-full border border-brand/10 font-semibold text-brand hover:bg-brand/5 transition-all">
                   <div className="bg-white shadow-md p-2 rounded-full">
                     <Play className="w-4 h-4 text-brand fill-brand" />
                   </div>
@@ -52,7 +52,7 @@ export default function Hero() {
               </div>
 
               {/* Consultation Badge */}
-              <div className="flex items-center space-x-3 mb-10 text-gray-500">
+              <div className="flex items-center space-x-3 mb-10 text-brand/50">
                 <div className="flex -space-x-3">
                   {[
                     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e',
@@ -73,9 +73,9 @@ export default function Hero() {
             
             {/* Features list */}
             <div className="flex flex-wrap gap-4 mb-12">
-              {['15+ Countries', '500+ Universities', '98% Visa Success'].map((feature) => (
-                <div key={feature} className="flex items-center space-x-2 bg-gray-50 px-4 py-2 rounded-full border border-gray-100 shadow-sm transition-all hover:border-brand/20">
-                  <span className="text-sm font-bold text-gray-700">{feature}</span>
+              {['15+ Countries', '500+ Universities', 'End to End Assistance Guaranteed'].map((feature) => (
+                <div key={feature} className="flex items-center space-x-2 bg-brand/5 px-4 py-2 rounded-full border border-brand/10 shadow-sm transition-all hover:border-brand/20">
+                  <span className="text-sm font-bold text-brand/80">{feature}</span>
                 </div>
               ))}
             </div>
@@ -88,7 +88,7 @@ export default function Hero() {
             className="relative"
           >
             {/* Main Image */}
-            <div className="relative z-10 rounded-[4rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(31,38,135,0.15)] border-[1px] border-gray-100 max-w-[550px] ml-auto bg-gray-50">
+            <div className="relative z-10 rounded-[4rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(31,38,135,0.15)] border-[1px] border-brand/10 max-w-[550px] ml-auto bg-brand-light">
               <img 
                 src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1200" 
                 alt="Students studying"
@@ -118,15 +118,15 @@ export default function Hero() {
             <motion.div 
               animate={{ y: [0, -10, 0] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="absolute -bottom-10 right-10 z-30 bg-white p-6 rounded-2xl shadow-2xl border border-gray-100 hidden sm:block"
+              className="absolute -bottom-10 right-10 z-30 bg-white p-6 rounded-2xl shadow-2xl border border-brand/5 hidden sm:block"
             >
               <div className="flex items-center space-x-4">
                 <div className="bg-brand-light p-3 rounded-xl">
-                  <Globe className="w-6 h-6 text-brand" />
+                  <GraduationCap className="w-6 h-6 text-brand" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-gray-900">250+</div>
-                  <div className="text-sm text-gray-500 font-medium">Students Placed Globally</div>
+                  <div className="text-2xl font-bold text-brand">250+</div>
+                  <div className="text-sm text-brand/50 font-medium">Students Placed Globally</div>
                 </div>
               </div>
             </motion.div>
@@ -135,11 +135,11 @@ export default function Hero() {
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ repeat: Infinity, duration: 3, ease: "easeInOut", delay: 1 }}
-              className="absolute top-10 -right-4 z-30 bg-emerald-500 text-white p-4 rounded-2xl shadow-xl hidden lg:block"
+              className="absolute top-10 -right-4 z-30 bg-brand text-white p-4 rounded-2xl shadow-xl hidden lg:block"
             >
               <div className="flex items-center space-x-2">
-                <CheckCircle2 className="w-5 h-5" />
-                <span className="font-bold text-sm">Visa Guaranteed*</span>
+                <CheckCircle2 className="w-5 h-5 text-accent" />
+                <span className="font-bold text-sm">End to End Assistance Guaranteed</span>
               </div>
             </motion.div>
             

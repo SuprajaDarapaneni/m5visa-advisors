@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ChevronLeft, CheckCircle2, Globe, GraduationCap, MapPin, Search } from 'lucide-react';
+import { ChevronLeft, CheckCircle2, GraduationCap, MapPin, Search } from 'lucide-react';
 
 const destinationData: Record<string, any> = {
   usa: {
@@ -57,7 +57,7 @@ const destinationData: Record<string, any> = {
   },
   ireland: {
     name: 'Ireland',
-    image: 'https://images.unsplash.com/photo-1550186082-6607ec3a508b?auto=format&fit=crop&q=80&w=1200',
+    image: 'https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?auto=format&fit=crop&q=80&w=1200',
     title: 'Study in Ireland: Land of Scholars',
     description: 'Ireland is one of the most friendly and welcoming countries in the world, known for its high-quality research institutions.',
     features: ['Hub for Tech Giants', '2-Year Stay Back Option', 'English Speaking Country', 'Global Recognition'],
@@ -129,7 +129,7 @@ export default function DestinationDetail() {
   if (!data) {
     return (
       <div className="pt-32 pb-20 text-center">
-        <h1 className="text-2xl font-bold text-gray-900 mb-4">Destination not found</h1>
+        <h1 className="text-2xl font-bold text-brand mb-4">Destination not found</h1>
         <Link to="/destinations" className="text-brand font-bold underline">Back to Destinations</Link>
       </div>
     );
@@ -140,14 +140,14 @@ export default function DestinationDetail() {
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
         <img src={data.image} alt={data.name} className="absolute inset-0 w-full h-full object-cover" referrerPolicy="no-referrer" />
-        <div className="absolute inset-0 bg-gray-900/60" />
+        <div className="absolute inset-0 bg-brand/60" />
         <div className="relative z-10 text-center px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center justify-center space-x-2 bg-brand/30 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 mb-6 mx-auto w-fit"
           >
-            <Globe className="w-4 h-4 text-white" />
+            <MapPin className="w-4 h-4 text-white" />
             <span className="text-sm font-bold text-white uppercase tracking-widest">{data.name}</span>
           </motion.div>
           <motion.h1 
@@ -164,30 +164,30 @@ export default function DestinationDetail() {
       {/* Content Section */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link to="/destinations" className="inline-flex items-center text-gray-500 font-bold mb-12 hover:text-brand transition-colors">
+          <Link to="/destinations" className="inline-flex items-center text-brand-dark/50 font-bold mb-12 hover:text-brand transition-colors">
             <ChevronLeft className="mr-1 w-5 h-5" />
             Back to Destinations
           </Link>
 
           <div className="grid lg:grid-cols-3 gap-16">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Overview</h2>
-              <p className="text-lg text-gray-600 leading-relaxed mb-10">
+              <h2 className="text-3xl font-bold text-brand-dark mb-6">Overview</h2>
+              <p className="text-lg text-brand-dark/70 leading-relaxed mb-10">
                 {data.description}
               </p>
 
               <div className="grid sm:grid-cols-2 gap-6 mb-16">
                 {data.features.map((feature: string) => (
-                  <div key={feature} className="flex items-center space-x-4 bg-gray-50 p-6 rounded-2xl border border-gray-100">
-                    <div className="bg-emerald-500/10 p-2 rounded-lg">
-                      <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+                  <div key={feature} className="flex items-center space-x-4 bg-brand/5 p-6 rounded-2xl border border-brand/10">
+                    <div className="bg-brand/10 p-2 rounded-lg">
+                      <CheckCircle2 className="w-5 h-5 text-brand" />
                     </div>
-                    <span className="font-bold text-gray-800">{feature}</span>
+                    <span className="font-bold text-brand/80">{feature}</span>
                   </div>
                 ))}
               </div>
 
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">How to Apply</h2>
+              <h2 className="text-3xl font-bold text-brand mb-8">How to Apply</h2>
               <div className="space-y-8">
                 {data.process.map((item: any, i: number) => (
                   <div key={i} className="flex space-x-6">
@@ -195,8 +195,8 @@ export default function DestinationDetail() {
                       {i + 1}
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold text-gray-900 mb-2">{item.step}</h4>
-                      <p className="text-gray-600 leading-relaxed">{item.text}</p>
+                      <h4 className="text-xl font-bold text-brand mb-2">{item.step}</h4>
+                      <p className="text-brand/70 leading-relaxed">{item.text}</p>
                     </div>
                   </div>
                 ))}
@@ -204,11 +204,11 @@ export default function DestinationDetail() {
             </div>
 
             <div className="space-y-8">
-              <div className="bg-gray-900 p-8 rounded-[2rem] text-white">
+              <div className="bg-brand p-8 rounded-[2rem] text-white">
                 <h3 className="text-2xl font-bold mb-6">Need Assistance?</h3>
-                <p className="text-gray-400 mb-8">Our expert advisors are ready to help you with the step-by-step process of studying abroad in {data.name}.</p>
+                <p className="text-brand-light/60 mb-8">Our expert advisors are ready to help you with the step-by-step process of studying abroad in {data.name}.</p>
                 <a 
-                  href={`https://wa.me/919515354865?text=I%20need%20assistance%20regarding%20studying%20in%20${encodeURIComponent(data.name)}.`} 
+                  href={`https://wa.me/918333075544?text=I%20need%20assistance%20regarding%20studying%20in%20${encodeURIComponent(data.name)}.`} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="block w-full bg-brand text-white text-center py-4 rounded-xl font-bold hover:bg-brand/90 transition-all shadow-lg shadow-brand/20"
@@ -221,15 +221,15 @@ export default function DestinationDetail() {
                 <h3 className="text-xl font-bold text-brand mb-6 italic underline">Destinations Quick Info</h3>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-gray-500 font-medium tracking-tight">Visa Success Rate</span>
-                    <span className="font-bold text-brand">98%</span>
+                    <span className="text-brand/50 font-medium tracking-tight">Assistance</span>
+                    <span className="font-bold text-brand uppercase text-[10px]">End to End Guaranteed</span>
                   </div>
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-gray-500 font-medium tracking-tight">Avg. Processing Time</span>
+                    <span className="text-brand/50 font-medium tracking-tight">Avg. Processing Time</span>
                     <span className="font-bold text-brand">3-6 Weeks</span>
                   </div>
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-gray-500 font-medium tracking-tight">Post-study work</span>
+                    <span className="text-brand/50 font-medium tracking-tight">Post-study work</span>
                     <span className="font-bold text-brand">Available</span>
                   </div>
                 </div>

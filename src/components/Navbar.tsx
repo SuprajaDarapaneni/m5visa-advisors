@@ -27,12 +27,16 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="bg-brand p-2 rounded-xl shadow-2xl group-hover:rotate-12 transition-transform">
-              <Globe className="w-6 h-6 text-white stroke-[1.5px]" />
+            <div className="bg-white p-1.5 rounded-xl shadow-lg border border-brand/5 group-hover:rotate-6 transition-transform overflow-hidden flex items-center justify-center">
+              <img src="/logo.jpeg" alt="M5 Visa Advisors Logo" className="w-12 h-12 object-contain" />
             </div>
-            <span className="text-2xl font-bold tracking-tighter text-gray-900">
-              M5 <span className="text-accent">Visa</span> <span className="font-serif italic font-medium text-brand">Advisors</span>
-            </span>
+            <div className="flex flex-col">
+              <span className="text-2xl font-bold tracking-tighter text-brand leading-none">
+                M5 <span className="text-accent">Visa</span> <span className="font-serif italic font-medium text-brand">Advisors</span>
+              </span>
+              <span className="text-[10px] font-bold text-brand uppercase tracking-widest mt-1">Visa and Educational Consultants</span>
+              <span className="text-[9px] font-medium text-accent uppercase tracking-[0.2em]">Study Visas • Tourist Visas</span>
+            </div>
           </Link>
 
           {/* Desktop Nav */}
@@ -42,19 +46,19 @@ export default function Navbar() {
                 key={link.name}
                 to={link.href}
                 className={`text-xs font-bold uppercase tracking-[0.2em] transition-all hover:text-brand ${
-                  location.pathname === link.href ? 'text-brand' : 'text-gray-700'
+                  location.pathname === link.href ? 'text-brand' : 'text-brand/70'
                 }`}
               >
                 {link.name}
               </Link>
             ))}
             <a 
-              href="https://wa.me/919515354865?text=Hello%2C%20I%20would%20like%20to%20get%20the%20Free%20Study%20Abroad%20Guide." 
+              href="https://wa.me/918333075544?text=Hello%2C%20I%20would%20like%20to%20get%20the%20Free%20Study%20Abroad%20Guide." 
               target="_blank" 
               rel="noopener noreferrer"
               className="bg-brand text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-[0.2em] hover:shadow-2xl hover:shadow-brand/20 transition-all"
             >
-              Get Guide
+              Get Free Guide
             </a>
           </div>
 
@@ -86,7 +90,7 @@ export default function Navbar() {
                   to={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={`block px-4 py-4 text-base font-bold rounded-xl transition-colors ${
-                      location.pathname === link.href ? 'text-brand bg-brand-light/30' : 'text-gray-800 hover:bg-brand-light/50'
+                      location.pathname === link.href ? 'text-brand bg-brand-light/30' : 'text-brand hover:bg-brand-light/50'
                   }`}
                 >
                   {link.name}
@@ -94,7 +98,7 @@ export default function Navbar() {
               ))}
               <div className="pt-4 px-4">
                 <a 
-                  href="https://wa.me/919515354865?text=Hello%2C%20I%20would%20like%20to%20apply%20for%20a%20student%20visa%20service." 
+                  href="https://wa.me/918333075544?text=Hello%2C%20I%20would%20like%20to%20apply%20for%20a%20student%20visa%20service." 
                   target="_blank" 
                   rel="noopener noreferrer"
                   onClick={() => setIsMobileMenuOpen(false)}

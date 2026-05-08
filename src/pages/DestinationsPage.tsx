@@ -35,7 +35,7 @@ const destinations = [
     id: 'ireland',
     name: 'Study in Ireland', 
     universities: '20+ Institutions', 
-    image: 'https://images.unsplash.com/photo-1550186082-6607ec3a508b?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?auto=format&fit=crop&q=80&w=800',
     description: 'Known as the "Land of Saints and Scholars," Ireland offers a vibrant culture and excellent research facilities.'
   },
   { 
@@ -71,9 +71,9 @@ const destinations = [
 export default function DestinationsPage() {
   return (
     <div className="pt-24 min-h-screen">
-      <div className="bg-gray-900 py-20 text-center">
+      <div className="bg-brand py-20 text-center">
         <h1 className="text-4xl lg:text-6xl font-bold text-white mb-4">Countries to Study In</h1>
-        <p className="text-gray-400 text-lg max-w-2xl mx-auto">Look at the top places to study around the world and find the best one for you.</p>
+        <p className="text-brand-light/60 text-lg max-w-2xl mx-auto">Look at the top places to study around the world and find the best one for you.</p>
       </div>
 
       <section className="py-24 bg-white">
@@ -86,7 +86,7 @@ export default function DestinationsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-xl shadow-gray-100/50 hover:shadow-2xl transition-all h-full flex flex-col"
+                className="bg-white rounded-[2.5rem] overflow-hidden border border-brand/10 shadow-xl shadow-brand/5 hover:shadow-2xl transition-all h-full flex flex-col"
               >
                 <div className="h-64 relative">
                   <img 
@@ -102,15 +102,15 @@ export default function DestinationsPage() {
                   </div>
                 </div>
                 <div className="p-10 flex-grow flex flex-col">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">{country.name}</h2>
-                  <p className="text-gray-600 mb-8 flex-grow leading-relaxed">
+                  <h2 className="text-2xl font-bold text-brand mb-4">{country.name}</h2>
+                  <p className="text-brand/70 mb-8 flex-grow leading-relaxed">
                     {country.description}
                   </p>
                   
                   <div className="space-y-3 mb-8">
                     {['Top Ranked Universities', 'Flexible Work Options', 'Permanent Residency Paths'].map((point) => (
-                      <div key={point} className="flex items-center space-x-2 text-sm text-gray-600 font-medium">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                      <div key={point} className="flex items-center space-x-2 text-sm text-brand/60 font-medium">
+                        <CheckCircle2 className="w-4 h-4 text-brand" />
                         <span>{point}</span>
                       </div>
                     ))}

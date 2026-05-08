@@ -28,15 +28,15 @@ export default function About() {
             viewport={{ once: true }}
           >
             <h2 className="text-xs font-bold text-accent uppercase tracking-[0.3em] mb-6">Discovery</h2>
-            <h3 className="text-5xl lg:text-7xl font-medium text-gray-900 mb-8 leading-tight tracking-tight">
+            <h3 className="text-5xl lg:text-7xl font-medium text-brand mb-8 leading-tight tracking-tight">
               Best Service for <br />
               <span className="font-serif italic text-brand">Your Global Career</span>
             </h3>
-            <p className="text-xl text-gray-500 font-light leading-relaxed mb-10">
+            <p className="text-xl text-brand/60 font-light leading-relaxed mb-10">
               M5 Visa Advisors is a top study abroad consultant. We help students find the best schools and universities across the world.
             </p>
 
-            <div className="grid sm:grid-cols-2 gap-8">
+            <div className="grid sm:grid-cols-2 gap-8 mb-12">
               {[
                 { icon: Target, title: 'Our Goal', text: 'Helping students find clear paths to study abroad success.' },
                 { icon: Award, title: 'Expert Team', text: 'Our counselors know all about visa rules and admissions.' },
@@ -46,11 +46,38 @@ export default function About() {
                     <item.icon className="w-5 h-5 text-brand" />
                   </div>
                   <div>
-                    <h4 className="text-xl font-serif text-gray-900 mb-2">{item.title}</h4>
-                    <p className="text-sm text-gray-500 font-light leading-relaxed">{item.text}</p>
+                    <h4 className="text-xl font-serif text-brand mb-2">{item.title}</h4>
+                    <p className="text-sm text-brand/60 font-light leading-relaxed">{item.text}</p>
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Founder Section */}
+            <div className="bg-brand py-12 px-10 rounded-[2.5rem] shadow-2xl shadow-brand/20 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full -mr-32 -mt-32 transition-transform group-hover:scale-110 duration-[2s]"></div>
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full -ml-16 -mb-16"></div>
+              
+              <div className="relative z-10">
+                <h4 className="text-xs font-bold text-accent uppercase tracking-[0.3em] mb-6 flex items-center">
+                  <span className="w-8 h-[1px] bg-accent/50 mr-3"></span>
+                  Meet our Founder
+                </h4>
+                
+                <p className="text-white/90 italic font-medium text-xl leading-relaxed mb-8 max-w-lg">
+                  "Our mission at M5 Visa Advisors is to bridge the gap between global education dreams and reality. We believe every student deserves a chance to excel on the global stage with the right guidance."
+                </p>
+                
+                <div className="flex items-center space-x-5">
+                  <div className="w-14 h-14 rounded-2xl bg-white p-1 shadow-xl flex items-center justify-center transform group-hover:rotate-6 transition-transform">
+                    <img src="/logo.jpeg" alt="M5" className="w-full h-full object-contain" />
+                  </div>
+                  <div>
+                    <div className="text-lg font-bold text-white uppercase tracking-wider">Saketh Lonavath</div>
+                    <div className="text-[10px] font-bold text-accent uppercase tracking-[0.2em] mt-1 bg-white/10 px-2 py-0.5 rounded-md inline-block">Founder & Director</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
