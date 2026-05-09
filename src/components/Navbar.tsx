@@ -36,7 +36,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 left-0 right-0 z-[1000] bg-white border-b border-gray-100 shadow-sm font-sans">
       {/* Top Bar */}
-      <div className="hidden lg:block bg-brand text-white border-b border-white/5 py-3">
+      <div className="hidden lg:block bg-brand text-white border-b border-white/5 py-1.5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center text-[11px] font-bold uppercase tracking-[0.15em]">
             <div className="flex items-center space-x-8">
@@ -65,18 +65,18 @@ export default function Navbar() {
         </div>
       </div>
 
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-5 group">
-            <div className="bg-white p-1 rounded-2xl shadow-xl border border-brand/5 group-hover:rotate-6 transition-transform overflow-hidden flex items-center justify-center w-24 h-24 lg:w-28 lg:h-28">
+          <Link to="/" className="flex items-center space-x-3 group">
+            <div className="bg-white p-1 rounded-xl shadow-lg border border-brand/5 group-hover:rotate-6 transition-transform overflow-hidden flex items-center justify-center w-16 h-16 lg:w-20 lg:h-20">
               <img src="/logo.jpeg" alt="M5 Visa Advisors Logo" className="w-full h-full object-contain transform scale-110" />
             </div>
             <div className="flex flex-col">
-              <span className="text-2xl lg:text-3xl font-bold tracking-tighter text-brand leading-none">
+              <span className="text-xl lg:text-2xl font-bold tracking-tighter text-brand leading-none">
                 M5 <span className="text-accent">Visa</span> <span className="font-serif italic font-medium text-brand">Advisors</span>
               </span>
-              <span className="text-[10px] lg:text-[12px] font-black text-[#1e40af] uppercase tracking-[0.25em] mt-1.5">Study Visas • Tourist Visas</span>
+              <span className="text-[9px] lg:text-[10px] font-black text-[#1e40af] uppercase tracking-[0.25em] mt-1">Study Visas • Tourist Visas</span>
             </div>
           </Link>
 
@@ -189,7 +189,7 @@ export default function Navbar() {
               href="https://wa.me/918333075544" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="bg-brand text-white px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-[0.2em] hover:shadow-2xl hover:shadow-brand/20 transition-all border border-transparent hover:border-accent"
+              className="bg-brand text-white px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] hover:shadow-2xl hover:shadow-brand/20 transition-all border border-transparent hover:border-accent"
             >
               Get Free Guide
             </a>
