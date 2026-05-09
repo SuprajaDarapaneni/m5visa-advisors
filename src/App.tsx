@@ -26,7 +26,7 @@ export default function App() {
             <Route path="/destinations/:id" element={<DestinationDetail />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<ServicesPage />} />
-            <Route path="/contact" element={<div className="pt-24"><ContactForm /></div>} />
+            <Route path="/contact" element={<div className="pt-8"><ContactForm /></div>} />
           </Routes>
         </main>
         <Footer />

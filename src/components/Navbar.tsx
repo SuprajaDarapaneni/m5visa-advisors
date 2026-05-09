@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Globe, Phone, Mail, Instagram, Facebook } from 'lucide-react';
+import { Menu, X, Phone, Mail, Instagram, Linkedin, ChevronDown, MessageCircle, Globe } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -23,48 +24,172 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'Destinations', href: '/destinations' },
-    { name: 'Services', href: '/services' },
     { name: 'About Us', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ];
 
+  const serviceLinks = [
+    { name: 'Study Visas', href: '/services#study-visas' },
+    { name: 'Tourist Visas', href: '/services#tourist-visas' },
+  ];
+
   return (
-    <header className="sticky top-0 left-0 right-0 z-[1000] bg-white border-b border-gray-100 shadow-sm">
-      <nav 
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4"
-      >
+    <header className="sticky top-0 left-0 right-0 z-[1000] bg-white border-b border-gray-100 shadow-sm font-sans">
+      {/* Top Bar */}
+      <div className="hidden lg:block bg-brand text-white border-b border-white/5 py-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center text-[11px] font-bold uppercase tracking-[0.15em]">
+            <div className="flex items-center space-x-8">
+              <a href="mailto:info@m5visaadvisors.in" className="flex items-center hover:text-accent transition-colors">
+                <Mail className="w-3.5 h-3.5 mr-2" />
+                info@m5visaadvisors.in
+              </a>
+              <a href="tel:+918333075544" className="flex items-center hover:text-accent transition-colors">
+                <Phone className="w-3.5 h-3.5 mr-2" />
+                +91 83330 75544
+              </a>
+              <span className="flex items-center">
+                <MessageCircle className="w-3.5 h-3.5 mr-2" />
+                60ft road, Suryapet, Telangana, 508213
+              </span>
+            </div>
+            <div className="flex items-center space-x-6">
+              <a href="https://www.linkedin.com/company/m5-visa-advisors/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Linkedin className="w-4 h-4" /></a>
+              <a href="https://instagram.com/m5visaadvisors" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Instagram className="w-4 h-4" /></a>
+              <a href="https://wa.me/918333075544" className="hover:text-accent transition-colors flex items-center">
+                <span className="mr-2">Chat with us</span>
+                <Globe className="w-4 h-4 text-accent" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="bg-white p-1 rounded-2xl shadow-xl border border-brand/5 group-hover:rotate-6 transition-transform overflow-hidden flex items-center justify-center w-20 h-20">
-              <img src="/logo.jpeg" alt="M5 Visa Advisors Logo" className="w-full h-full object-contain" />
+          <Link to="/" className="flex items-center space-x-5 group">
+            <div className="bg-white p-1 rounded-2xl shadow-xl border border-brand/5 group-hover:rotate-6 transition-transform overflow-hidden flex items-center justify-center w-24 h-24 lg:w-28 lg:h-28">
+              <img src="/logo.jpeg" alt="M5 Visa Advisors Logo" className="w-full h-full object-contain transform scale-110" />
             </div>
             <div className="flex flex-col">
-              <span className="text-2xl font-bold tracking-tighter text-brand leading-none">
+              <span className="text-2xl lg:text-3xl font-bold tracking-tighter text-brand leading-none">
                 M5 <span className="text-accent">Visa</span> <span className="font-serif italic font-medium text-brand">Advisors</span>
               </span>
-              <span className="text-[9px] font-bold text-accent uppercase tracking-[0.2em]">Study Visas • Tourist Visas</span>
+              <span className="text-[10px] lg:text-[12px] font-black text-[#1e40af] uppercase tracking-[0.25em] mt-1.5">Study Visas • Tourist Visas</span>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-12">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className={`text-xs font-bold uppercase tracking-[0.2em] transition-all hover:text-brand ${
-                  location.pathname === link.href ? 'text-brand' : 'text-brand/70'
+          <div className="hidden md:flex items-center space-x-10">
+            <Link
+              to="/"
+              className={`text-xs font-bold uppercase tracking-[0.2em] transition-all hover:text-brand ${
+                location.pathname === '/' ? 'text-brand' : 'text-brand/70'
+              }`}
+            >
+              Home
+            </Link>
+
+            {/* Services Dropdown */}
+            <div 
+              className="relative group"
+            >
+              <button
+                className={`flex items-center space-x-2 text-xs font-bold uppercase tracking-[0.2em] transition-all hover:text-brand ${
+                  location.pathname === '/services' ? 'text-brand' : 'text-brand/70'
                 }`}
               >
-                {link.name}
-              </Link>
-            ))}
+                <span>Services</span>
+                <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform duration-300" />
+              </button>
+              
+              {/* Main Services Dropdown */}
+              <div className="absolute top-full left-0 w-64 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] rounded-2xl border border-gray-100 py-4 mt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-300 z-[1001]">
+                <div className="relative group/sub">
+                  <div
+                    className="flex justify-between items-center px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-[#1e40af] hover:bg-brand-light/50 transition-all cursor-pointer"
+                  >
+                    <span>Study Visas</span>
+                    <ChevronDown className="w-3 h-3 -rotate-90" />
+                  </div>
+                  {/* Study Countries Submenu */}
+                  <div className="absolute left-full top-0 w-72 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] rounded-2xl border border-gray-100 py-4 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible translate-x-2 group-hover/sub:translate-x-0 transition-all duration-300 ml-1">
+                    <div className="grid grid-cols-2 gap-x-2 px-2">
+                       {[
+                        'United States', 'Canada', 'United Kingdom', 'Ireland', 'Germany', 'France', 
+                        'Italy', 'Latvia', 'Austria', 'Spain', 'Finland', 'Switzerland', 
+                        'Poland', 'Malta', 'Cyprus', 'Singapore', 'UAE', 'Japan'
+                      ].map(country => (
+                        <Link 
+                          key={country} 
+                          to={`/destinations`} 
+                          className="px-4 py-2 text-[9px] font-bold text-brand hover:text-accent hover:bg-brand/5 rounded-lg whitespace-nowrap"
+                        >
+                          {country}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative group/sub2">
+                  <div
+                    className="flex justify-between items-center px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-[#1e40af] hover:bg-brand-light/50 transition-all cursor-pointer"
+                  >
+                    <span>Tourist Visas</span>
+                    <ChevronDown className="w-3 h-3 -rotate-90" />
+                  </div>
+                  {/* Tourist Locations Submenu */}
+                  <div className="absolute left-full top-0 w-64 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] rounded-2xl border border-gray-100 py-4 opacity-0 invisible group-hover/sub2:opacity-100 group-hover/sub2:visible translate-x-2 group-hover/sub2:translate-x-0 transition-all duration-300 ml-1">
+                    <div className="flex flex-col space-y-1 px-4">
+                       {['USA', 'UK', 'Europe', 'Middle East Countries'].map(region => (
+                        <Link 
+                          key={region} 
+                          to="/contact" 
+                          className="px-4 py-3 text-[10px] font-bold text-brand hover:text-accent hover:bg-brand/5 rounded-lg border-b border-brand/5 last:border-0"
+                        >
+                          {region}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <Link
+              to="/destinations"
+              className={`text-xs font-bold uppercase tracking-[0.2em] transition-all hover:text-brand ${
+                location.pathname === '/destinations' ? 'text-brand' : 'text-brand/70'
+              }`}
+            >
+              Destinations
+            </Link>
+            
+            <Link
+              to="/about"
+              className={`text-xs font-bold uppercase tracking-[0.2em] transition-all hover:text-brand ${
+                location.pathname === '/about' ? 'text-brand' : 'text-brand/70'
+              }`}
+            >
+              About Us
+            </Link>
+            
+            <Link
+              to="/contact"
+              className={`text-xs font-bold uppercase tracking-[0.2em] transition-all hover:text-brand ${
+                location.pathname === '/contact' ? 'text-brand' : 'text-brand/70'
+              }`}
+            >
+              Contact
+            </Link>
+
             <a 
-              href="https://wa.me/918333075544?text=Hello%2C%20I%20would%20like%20to%20get%20the%20Free%20Study%20Abroad%20Guide." 
+              href="https://wa.me/918333075544" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="bg-brand text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-[0.2em] hover:shadow-2xl hover:shadow-brand/20 transition-all"
+              className="bg-brand text-white px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-[0.2em] hover:shadow-2xl hover:shadow-brand/20 transition-all border border-transparent hover:border-accent"
             >
               Get Free Guide
             </a>
@@ -91,8 +216,17 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-white border-t border-gray-100 shadow-xl overflow-hidden"
           >
-            <div className="px-4 pt-2 pb-6 space-y-1">
-              {navLinks.map((link) => (
+            <div className="px-4 pt-4 pb-8 space-y-1">
+              <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-4 text-base font-bold text-brand hover:bg-brand-light/20 rounded-xl">Home</Link>
+              
+              <div className="px-4 py-4 space-y-4">
+                <div className="text-[10px] font-bold uppercase tracking-widest text-brand/30">Our Services</div>
+                {serviceLinks.map(link => (
+                  <Link key={link.name} to={link.href} onClick={() => setIsMobileMenuOpen(false)} className="block text-brand font-bold pl-2">{link.name}</Link>
+                ))}
+              </div>
+
+              {navLinks.slice(1).map((link) => (
                 <Link
                   key={link.name}
                   to={link.href}
@@ -104,13 +238,13 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
-              <div className="pt-4 px-4">
+              <div className="pt-6 px-4">
                 <a 
-                  href="https://wa.me/918333075544?text=Hello%2C%20I%20would%20like%20to%20apply%20for%20a%20student%20visa%20service." 
+                  href="https://wa.me/918333075544" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full bg-brand text-white py-3.5 rounded-xl text-center font-bold shadow-lg shadow-brand/20"
+                  className="block w-full bg-brand text-white py-4 rounded-xl text-center font-bold shadow-lg shadow-brand/20 uppercase tracking-widest text-sm"
                 >
                   Apply Now
                 </a>

@@ -6,22 +6,25 @@ const reviews = [
     name: 'Nikitha',
     country: 'USA',
     text: 'M5 Visa Advisors made my application process for the USA incredibly smooth. Their attention to detail on my SOP was a game changer.',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200'
   },
   {
     name: 'Divya',
     country: 'USA',
     text: 'I was worried about my USA visa interview, but the mock sessions with M5 Visa Advisors experts gave me the confidence I needed.',
+    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200'
   },
   {
     name: 'Praneetha',
     country: 'UK',
     text: 'From IELTS prep to post-arrival support in the UK, M5 Visa Advisors was with me every step. Highly recommended for any aspirant.',
+    image: 'https://images.unsplash.com/photo-1567532939604-b6c5b0ad2e01?auto=format&fit=crop&q=80&w=200'
   },
 ];
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-24 bg-brand-light/30">
+    <section id="testimonials" className="py-12 bg-brand-light/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-sm font-bold text-accent uppercase tracking-widest mb-4">Success Stories</h2>
@@ -53,8 +56,8 @@ export default function Testimonials() {
               </p>
               
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 rounded-full bg-brand/5 flex items-center justify-center text-brand font-bold text-lg">
-                  {review.name.charAt(0)}
+                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-brand/10">
+                  <img src={review.image} alt={review.name} className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <div className="font-bold text-brand">{review.name}</div>

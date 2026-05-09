@@ -10,6 +10,12 @@ export default function ContactForm() {
     country: 'Select Destination'
   });
 
+  const countries = [
+    'United States', 'Canada', 'United Kingdom', 'Ireland', 'Germany', 'France', 
+    'Italy', 'Latvia', 'Austria', 'Spain', 'Finland', 'Switzerland', 'Poland', 
+    'Malta', 'Cyprus', 'Singapore', 'United Arab Emirates', 'Japan', 'Other'
+  ];
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const message = `*M5 Visa Advisors Inquiry*%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Phone:* ${formData.phone}%0A*Country:* ${formData.country}`;
@@ -18,7 +24,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="py-32 bg-white relative overflow-hidden">
+    <section id="contact" className="py-12 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-brand rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] relative border border-white/5">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-bl from-accent/10 to-transparent -skew-x-12 hidden lg:block" />
@@ -58,7 +64,7 @@ export default function ContactForm() {
                   </div>
                   <div>
                     <div className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-1">Direct</div>
-                    <div className="text-lg font-medium text-white/90">m5visaadvisors@gmail.com</div>
+                    <div className="text-lg font-medium text-white/90">info@m5visaadvisors.in</div>
                   </div>
                 </div>
               </div>
@@ -112,11 +118,7 @@ export default function ContactForm() {
                       className="w-full border-b border-brand/10 py-4 focus:border-brand outline-none transition-all font-light text-lg appearance-none bg-transparent text-brand"
                     >
                       <option>Select Destination</option>
-                      <option>USA</option>
-                      <option>UK</option>
-                      <option>Canada</option>
-                      <option>Australia</option>
-                      <option>Other</option>
+                      {countries.map(c => <option key={c}>{c}</option>)}
                     </select>
                   </div>
                   

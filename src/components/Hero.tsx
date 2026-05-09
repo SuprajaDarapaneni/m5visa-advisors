@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function Hero() {
   return (
-    <section className="relative pt-6 pb-20 lg:pt-12 lg:pb-32 overflow-hidden bg-white">
+    <section className="relative pt-0 pb-16 lg:pt-0 lg:pb-24 overflow-hidden bg-white">
       {/* Background Ornaments */}
       <div className="absolute top-0 right-0 -z-10 w-1/2 h-full bg-brand-light/30 rounded-bl-[100px] hidden lg:block" />
       <div className="absolute top-1/4 left-10 -z-10 w-64 h-64 bg-accent/5 blur-3xl rounded-full" />

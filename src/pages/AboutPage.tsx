@@ -4,8 +4,8 @@ import Stats from '../components/Stats';
 
 export default function AboutPage() {
   return (
-    <div className="pt-24 min-h-screen">
-      <div className="bg-brand py-24 text-center relative overflow-hidden">
+    <div className="min-h-screen">
+      <div className="bg-brand py-12 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-accent/5 -skew-y-6 transform translate-y-12" />
         <div className="relative z-10">
           <h1 className="text-4xl lg:text-6xl font-bold text-white mb-4">About Our Team</h1>
@@ -16,7 +16,7 @@ export default function AboutPage() {
       <About />
       <Stats />
 
-      <section className="py-24 bg-brand-light/30">
+      <section className="py-12 bg-brand-light/30">
         <div className="max-w-4xl mx-auto px-4 text-center">
             <h2 className="text-3xl font-bold text-brand mb-6 italic">Our Core Values</h2>
             <div className="grid md:grid-cols-3 gap-8">

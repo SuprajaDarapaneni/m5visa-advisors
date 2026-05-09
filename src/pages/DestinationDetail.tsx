@@ -119,6 +119,162 @@ const destinationData: Record<string, any> = {
       { step: 'Fee Payment', text: 'Pay the application fee to process credits.' },
       { step: 'Permit', text: 'Apply for the residence permit for studies.' }
     ]
+  },
+  italy: {
+    name: 'Italy',
+    image: 'https://images.unsplash.com/photo-1498503182468-3b51cbb6cbaf?auto=format&fit=crop&q=80&w=1200',
+    title: 'Study in Italy: Art & Design',
+    description: 'Italy offers a unique cultural heritage and world-class education in fashion, design, and architecture.',
+    features: ['Historic Universities', 'Design Capitals', 'Affordable Living', 'Rich Culture'],
+    process: [
+      { step: 'Universitaly', text: 'Register and apply through the Universitaly portal.' },
+      { step: 'Pre-Enrolment', text: 'Complete the pre-enrolment process at the embassy.' },
+      { step: 'Acceptance', text: 'Receive your admission letter from the university.' },
+      { step: 'Visa', text: 'Apply for the national study visa (Type D).' }
+    ]
+  },
+  latvia: {
+    name: 'Latvia',
+    image: 'https://images.unsplash.com/photo-1517736996303-4eec4a66bb17?auto=format&fit=crop&q=80&w=1200',
+    title: 'Study in Latvia: Baltic Excellence',
+    description: 'Latvia provides high-quality European education with very competitive tuition fees and living costs.',
+    features: ['Schengen Country', 'English Programs', 'Focus on Research', 'Safe Environment'],
+    process: [
+      { step: 'Admission', text: 'Apply directly to the university of your choice.' },
+      { step: 'Verification', text: 'Undergo academic document verification (AIC).' },
+      { step: 'Agreement', text: 'Sign the study agreement and pay tuition fees.' },
+      { step: 'Stay Permit', text: 'Apply for the residence permit at the embassy.' }
+    ]
+  },
+  austria: {
+    name: 'Austria',
+    image: 'https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&q=80&w=1200',
+    title: 'Study in Austria: Heart of Europe',
+    description: 'Austria offers a high standard of education and living, with a strong emphasis on music, art, and research.',
+    features: ['Central Location', 'High Quality of Life', 'Rich History', 'Safe Environment'],
+    process: [
+      { step: 'Search', text: 'Find courses through the official OeAD database.' },
+      { step: 'Admission', text: 'Apply directly to the university and secure an offer.' },
+      { step: 'Insurance', text: 'Obtain the necessary health insurance coverage.' },
+      { step: 'Residence', text: 'Apply for the "Student" residence permit.' }
+    ]
+  },
+  spain: {
+    name: 'Spain',
+    image: 'https://images.unsplash.com/photo-1583779457094-0cdcf221fd88?auto=format&fit=crop&q=80&w=1200',
+    title: 'Study in Spain: Sun & Learning',
+    description: 'Spain has some of the world\'s top business schools and a vibrant cultural experience for students.',
+    features: ['Top Business Schools', 'Strong Alumni Networks', 'Vibrant Lifestyle', 'Schengen Access'],
+    process: [
+      { step: 'Pre-evaluation', text: 'Have your academic credentials evaluated by UNEDasiss.' },
+      { step: 'Admission', text: 'Apply to universities and receive your acceptance letter.' },
+      { step: 'Medical', text: 'Provide a medical certificate for the visa process.' },
+      { step: 'Visa', text: 'Apply for the Spanish long-stay student visa.' }
+    ]
+  },
+  finland: {
+    name: 'Finland',
+    image: 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&q=80&w=1200',
+    title: 'Study in Finland: World\'s Best Education',
+    description: 'Finland is globally recognized for its innovation and student-centric approach to higher education.',
+    features: ['Top PISA Rankings', 'Focus on Equality', 'Work Opportunities', 'Clean Environment'],
+    process: [
+      { step: 'Joint App', text: 'Apply through the national Studyinfo.fi portal.' },
+      { step: 'Entrance', text: 'Prepare for entrance exams or interview sessions.' },
+      { step: 'Acceptance', text: 'Secure your place and pay the tuition fee.' },
+      { step: 'Residence', text: 'Apply online for the study residence permit.' }
+    ]
+  },
+  switzerland: {
+    name: 'Switzerland',
+    image: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&q=80&w=1200',
+    title: 'Study in Switzerland: Peak of Excellence',
+    description: 'Switzerland is a world leader in finance, hospitality, and research, offering top-tier academic programs.',
+    features: ['Hospitality Hub', 'Banking Center', 'Global Research', 'Safe and Neutral'],
+    process: [
+      { step: 'Admission', text: 'Apply directly to the university and obtain an offer.' },
+      { step: 'Motivation', text: 'Submit a detailed motivation letter and CV.' },
+      { step: 'Financials', text: 'Show proof of sufficient funds for living in Switzerland.' },
+      { step: 'Stay Permit', text: 'Apply for the visa through the Swiss consulate.' }
+    ]
+  },
+  poland: {
+    name: 'Poland',
+    image: 'https://images.unsplash.com/photo-1519197924294-4ba991a11128?auto=format&fit=crop&q=80&w=1200',
+    title: 'Study in Poland: Central Value',
+    description: 'Poland offers affordable European degrees in a rapidly growing economy with a rich cultural history.',
+    features: ['Low Tuition Fees', 'Affordable Living', 'Dynamic Economy', 'Schengen Country'],
+    process: [
+      { step: 'Admission', text: 'Apply online to the university\'s international office.' },
+      { step: 'Verification', text: 'Ensure your previous degrees are recognized in Poland.' },
+      { step: 'Offer Letter', text: 'Secure the offer letter and pay the initial fee.' },
+      { step: 'Visa', text: 'Apply for the national visa (Type D) for studies.' }
+    ]
+  },
+  malta: {
+    name: 'Malta',
+    image: 'https://images.unsplash.com/photo-1516053303191-23097b6933b9?auto=format&fit=crop&q=80&w=1200',
+    title: 'Study in Malta: Island Education',
+    description: 'Malta is a safe, English-speaking destination in the heart of the Mediterranean with high quality education.',
+    features: ['English Speaking', 'Mediterranean Lifestyle', 'Safe Environment', 'Lower Costs'],
+    process: [
+      { step: 'Application', text: 'Submit your application to a recognized institution.' },
+      { step: 'Acceptance', text: 'Receive your Letter of Acceptance and payfees.' },
+      { step: 'Identity', text: 'Register with Identity Malta upon arrival.' },
+      { step: 'E-Residence', text: 'Apply for your E-Residence card for studies.' }
+    ]
+  },
+  cyprus: {
+    name: 'Cyprus',
+    image: 'https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?auto=format&fit=crop&q=80&w=1200',
+    title: 'Study in Cyprus: Crossroads of Continents',
+    description: 'Cyprus offers modern education facilities and an international atmosphere in a beautiful island setting.',
+    features: ['High Standards', 'Safe Environment', 'Growing Tech Scene', 'Rich Tourism'],
+    process: [
+      { step: 'Eligibility', text: 'Verify your academic documents from the Ministry.' },
+      { step: 'Admission', text: 'Secure admission from a private or public university.' },
+      { step: 'Approval', text: 'Receive the final approval from the Migration Dept.' },
+      { step: 'Arrival', text: 'Undergo mandatory medical screening on arrival.' }
+    ]
+  },
+  singapore: {
+    name: 'Singapore',
+    image: 'https://images.unsplash.com/photo-1525625230556-8e8b7e9ed803?auto=format&fit=crop&q=80&w=1200',
+    title: 'Study in Singapore: Global Hub',
+    description: 'Singapore combined eastern and western influences to provide a top-class education environment.',
+    features: ['Asian Powerhouse', 'Safety and Cleanliness', 'Innovation Leader', 'Multicultural'],
+    process: [
+      { step: 'Apply', text: 'Submit your application directly to the university.' },
+      { step: 'IPA', text: 'Receive your In-Principle Approval (IPA) letter.' },
+      { step: 'Student Pass', text: 'Apply for the Student Pass through the ICA portal.' },
+      { step: 'Registration', text: 'Complete your registration at the university campus.' }
+    ]
+  },
+  uae: {
+    name: 'United Arab Emirates',
+    image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=1200',
+    title: 'Study in UAE: Modern Excellence',
+    description: 'The UAE offers a safe and luxurious lifestyle with branch campuses of prestigious global universities.',
+    features: ['Tax-Free Environment', 'Modern Infrastructure', 'Safe and Secure', 'Global Hub'],
+    process: [
+      { step: 'Select', text: 'Choose from international branch or local campuses.' },
+      { step: 'Sponsorship', text: 'Ensure the university sponsors your student visa.' },
+      { step: 'Visa Process', text: 'Submit medical and security clearance documents.' },
+      { step: 'ID card', text: 'Apply for the Emirates ID card on arrival.' }
+    ]
+  },
+  japan: {
+    name: 'Japan',
+    image: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=1200',
+    title: 'Study in Japan: Tradition & Tech',
+    description: 'Japan offers a unique opportunity to study in one of the world\'s most technologically advanced countries.',
+    features: ['Cutting-Edge Tech', 'Rich Tradition', 'Part-Time Work Permit', 'Safe Society'],
+    process: [
+      { step: 'COE', text: 'Obtain the Certificate of Eligibility from Immigration.' },
+      { step: 'Language', text: 'Meet minimum Japanese language requirements if needed.' },
+      { step: 'Admission', text: 'Secure admission from your chosen Japanese university.' },
+      { step: 'Visa', text: 'Lodge your visa application at the local consulate.' }
+    ]
   }
 };
 
@@ -136,9 +292,9 @@ export default function DestinationDetail() {
   }
 
   return (
-    <div className="pt-20">
+    <div>
       {/* Hero Section */}
-      <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[50vh] min-h-[350px] flex items-center justify-center overflow-hidden">
         <img src={data.image} alt={data.name} className="absolute inset-0 w-full h-full object-cover" referrerPolicy="no-referrer" />
         <div className="absolute inset-0 bg-brand/60" />
         <div className="relative z-10 text-center px-4">
@@ -162,9 +318,9 @@ export default function DestinationDetail() {
       </section>
 
       {/* Content Section */}
-      <section className="py-24 bg-white">
+      <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link to="/destinations" className="inline-flex items-center text-brand-dark/50 font-bold mb-12 hover:text-brand transition-colors">
+          <Link to="/destinations" className="inline-flex items-center text-brand-dark/50 font-bold mb-8 hover:text-brand transition-colors">
             <ChevronLeft className="mr-1 w-5 h-5" />
             Back to Destinations
           </Link>
@@ -226,7 +382,7 @@ export default function DestinationDetail() {
                   </div>
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-brand/50 font-medium tracking-tight">Avg. Processing Time</span>
-                    <span className="font-bold text-brand">3-6 Weeks</span>
+                    <span className="font-bold text-brand">7-9 Weeks</span>
                   </div>
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-brand/50 font-medium tracking-tight">Post-study work</span>

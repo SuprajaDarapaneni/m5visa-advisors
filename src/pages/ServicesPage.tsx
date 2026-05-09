@@ -2,8 +2,8 @@ import Services from '../components/Services';
 
 export default function ServicesPage() {
   return (
-    <div className="pt-24 min-h-screen">
-      <div className="bg-brand py-24 text-center relative overflow-hidden">
+    <div className="min-h-screen">
+      <div className="bg-brand py-12 text-center relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl" />
         <div className="relative z-10">
           <h1 className="text-4xl lg:text-6xl font-bold text-white mb-4">Our Services</h1>
@@ -13,7 +13,7 @@ export default function ServicesPage() {
       
       <Services />
       
-      <section className="py-24 bg-white">
+      <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-brand rounded-[3rem] p-12 lg:p-20 text-center relative overflow-hidden">
             <div className="relative z-10">

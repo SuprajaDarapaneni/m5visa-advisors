@@ -12,16 +12,18 @@ export default function HomePage() {
     <>
       <Hero />
       <Stats />
-      <About />
-      <HowItWorks />
       <Destinations />
+      <div className="bg-brand/5 py-12">
+        <About />
+      </div>
+      <HowItWorks />
       <Services />
       <Testimonials />
-      <div className="bg-white py-12 border-t border-brand/5">
+      <div className="bg-white py-2 border-t border-brand/5">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <div className="inline-block px-4 py-1 bg-brand/10 rounded-full text-brand text-xs font-bold uppercase tracking-widest mb-4">Get Started</div>
-          <h2 className="text-4xl font-serif text-brand mb-4 italic">Ready to Apply?</h2>
-          <p className="text-brand/50 font-light max-w-lg mx-auto">Fill out the form below or visit our office for a free talk about your future.</p>
+          <div className="inline-block px-3 py-0.5 bg-brand/10 rounded-full text-brand text-[10px] font-bold uppercase tracking-widest mb-1.5">Get Started</div>
+          <h2 className="text-xl font-serif text-brand mb-1 italic">Ready to Apply?</h2>
+          <p className="text-brand/50 font-light text-[10px] max-w-lg mx-auto">Fill out the form below or visit our office for a free talk about your future.</p>
         </div>
       </div>
       <ContactForm />

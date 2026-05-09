@@ -4,14 +4,14 @@ import { MousePointerClick, MessageSquare, ClipboardCheck, GraduationCap, Plane 
 
 const steps = [
   {
-    title: 'Selection',
-    description: 'We help you choose the best courses and universities that fit your profile.',
-    icon: MousePointerClick,
-  },
-  {
     title: 'Consultation',
     description: 'Personalized guidance from our experts to build your application strategy.',
     icon: MessageSquare,
+  },
+  {
+    title: 'Selection',
+    description: 'We help you choose the best courses and universities that fit your profile.',
+    icon: MousePointerClick,
   },
   {
     title: 'Admission',
@@ -32,10 +32,10 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-32 bg-brand-light/30 overflow-hidden">
+    <section id="how-it-works" className="py-12 bg-brand-light/30 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-24">
-          <h2 className="text-xs font-bold text-accent uppercase tracking-[0.3em] mb-6">Our Process</h2>
+        <div className="text-center mb-16">
+          <h2 className="text-xs font-bold text-accent uppercase tracking-[0.3em] mb-4">Our Process</h2>
           <h3 className="text-5xl lg:text-7xl font-medium text-brand mb-8 leading-tight tracking-tighter">
             How it <span className="font-serif italic text-accent">Works</span>
           </h3>
@@ -45,9 +45,6 @@ export default function HowItWorks() {
         </div>
 
         <div className="relative">
-          {/* Connecting Line (Desktop) */}
-          <div className="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-brand/10 -translate-y-1/2" />
-          
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 relative z-10">
             {steps.map((step, index) => (
               <motion.div

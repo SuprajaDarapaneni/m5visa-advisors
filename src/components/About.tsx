@@ -3,7 +3,7 @@ import { Target, Users, Award } from 'lucide-react';
 
 export default function About() {
   return (
-    <section id="about" className="py-24 bg-white relative overflow-hidden">
+    <section id="about" className="py-12 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -74,7 +74,7 @@ export default function About() {
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-white uppercase tracking-tight mb-1">Saketh Lonavath</div>
-                    <div className="text-[11px] font-bold text-accent uppercase tracking-[0.2em] bg-white/10 px-3 py-1.5 rounded-lg inline-block">Founder & Director</div>
+                    <div className="text-[11px] font-bold text-accent uppercase tracking-[0.2em] bg-white/10 px-3 py-1.5 rounded-lg inline-block">Founder and Managing Director</div>
                   </div>
                 </div>
               </div>
