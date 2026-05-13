@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function Hero() {
   return (
-    <section className="relative pt-0 pb-16 lg:pt-0 lg:pb-24 overflow-hidden bg-white">
+    <section className="relative pt-12 pb-12 lg:pt-14 lg:pb-16 overflow-hidden bg-white">
       {/* Background Ornaments */}
       <div className="absolute top-0 right-0 -z-10 w-1/2 h-full bg-brand-light/30 rounded-bl-[100px] hidden lg:block" />
       <div className="absolute top-1/4 left-10 -z-10 w-64 h-64 bg-accent/5 blur-3xl rounded-full" />
@@ -16,7 +16,7 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/20 rounded-full px-4 py-1.5 mb-8">
+            <div className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/20 rounded-full px-4 py-1.5 mb-4">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
@@ -24,16 +24,16 @@ export default function Hero() {
               <span className="text-xs font-bold text-accent tracking-[0.2em] uppercase">Admissions Open Now</span>
             </div>
             
-            <h1 className="text-6xl lg:text-8xl font-medium text-brand leading-[0.95] mb-8 tracking-tighter">
+            <h1 className="text-6xl lg:text-8xl font-medium text-brand leading-[0.95] mb-5 tracking-tighter">
               <span className="text-brand">Empowering</span> Your <br />
               <span className="text-brand font-serif italic">Global Dreams</span>
             </h1>
             
-            <p className="text-xl text-brand/70 mb-10 max-w-lg leading-relaxed font-light">
+            <p className="text-xl text-brand/70 mb-6 max-w-lg leading-relaxed font-light">
               Start your study abroad journey with M5 Visa Advisors. We help you pick the best universities and manage your visa process simply and easily.
             </p>
             
-              <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-6">
+              <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-4">
                 <a 
                   href="https://wa.me/919515354865?text=Hello%2C%20I%20would%20like%20to%20book%20a%20free%20consultation%20with%20M5%20Visa%20Advisors." 
                   target="_blank" 
@@ -55,7 +55,7 @@ export default function Hero() {
               </div>
 
               {/* Consultation Badge */}
-              <div className="flex items-center space-x-3 mb-10 text-brand/50">
+              <div className="flex items-center space-x-3 mb-6 text-brand/50">
                 <div className="flex -space-x-3">
                   {[
                     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e',
@@ -75,7 +75,7 @@ export default function Hero() {
               </div>
             
             {/* Features list */}
-            <div className="flex flex-wrap gap-4 mb-12">
+            <div className="flex flex-wrap gap-4 mb-8">
               {['15+ Countries', '500+ Universities', 'End to End Assistance'].map((feature) => (
                 <div key={feature} className="flex items-center space-x-2 bg-brand/5 px-4 py-2 rounded-full border border-brand/10 shadow-sm transition-all hover:border-brand/20">
                   <span className="text-sm font-bold text-brand/80">{feature}</span>

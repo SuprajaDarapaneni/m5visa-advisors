@@ -91,7 +91,7 @@ const destinations = [
     id: 'spain',
     name: 'Study in Spain', 
     universities: '20+ Institutions', 
-    image: 'https://images.unsplash.com/photo-1583779457094-0cdcf221fd88?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1511527661048-7fe73d85e9a4?auto=format&fit=crop&q=80&w=800',
     description: 'Spain has first-class business schools and a vibrant culture that attracts students from everywhere.'
   },
   { 
@@ -119,7 +119,7 @@ const destinations = [
     id: 'malta',
     name: 'Study in Malta', 
     universities: '5+ Institutions', 
-    image: 'https://images.unsplash.com/photo-1516053303191-23097b6933b9?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1529680459049-bf0340fa0695?auto=format&fit=crop&q=80&w=800',
     description: 'Malta is an English-speaking island nation with a growing reputation for high-quality higher education.'
   },
   { 

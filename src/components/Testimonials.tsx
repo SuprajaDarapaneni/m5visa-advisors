@@ -18,7 +18,7 @@ const reviews = [
     name: 'Praneetha',
     country: 'UK',
     text: 'From IELTS prep to post-arrival support in the UK, M5 Visa Advisors was with me every step. Highly recommended for any aspirant.',
-    image: 'https://images.unsplash.com/photo-1567532939604-b6c5b0ad2e01?auto=format&fit=crop&q=80&w=200'
+    image: 'https://images.unsplash.com/photo-1573166475912-1ed8b4fb093d?auto=format&fit=crop&q=80&w=200'
   },
 ];
 

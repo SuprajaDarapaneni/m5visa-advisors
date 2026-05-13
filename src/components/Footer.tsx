@@ -5,7 +5,8 @@ import {
   Mail, 
   Phone, 
   Globe,
-  MessageCircle
+  MessageCircle,
+  Youtube
 } from 'lucide-react';
 
 export default function Footer() {
@@ -22,23 +23,23 @@ export default function Footer() {
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full -ml-32 -mb-32 blur-2xl" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16 items-start">
           {/* Brand Info */}
-          <div className="lg:col-span-1 space-y-8">
+          <div className="space-y-8">
             <Link to="/" className="flex flex-col space-y-4 group">
               <div className="bg-white p-1 rounded-2xl shadow-xl group-hover:rotate-6 transition-transform overflow-hidden flex items-center justify-center w-24 h-24">
                 <img src="/logo.jpeg" alt="Logo" className="w-full h-full object-contain" />
               </div>
-                  <div className="flex flex-col">
+              <div className="flex flex-col">
                 <span className="text-xl font-bold tracking-tighter leading-tight">
                   M5 Visa Advisors <br /> (OPC Private Limited)
                 </span>
-                <div className="mt-2 text-left">
-                  <span className="text-[11px] font-black text-accent uppercase tracking-[0.3em] whitespace-nowrap block">
+                <div className="mt-1.5 text-left">
+                  <span className="text-[10px] font-black text-accent uppercase tracking-[0.22em] block italic border-l-2 border-accent pl-3">
                     Visa and Educational Consultants
                   </span>
                 </div>
-                <span className="text-[9px] font-medium text-white/50 uppercase tracking-[0.2em] mt-1">
+                <span className="text-[9px] font-medium text-white/50 uppercase tracking-[0.2em] mt-2 block">
                   Study Visas • Tourist Visas
                 </span>
               </div>
@@ -54,6 +55,14 @@ export default function Footer() {
                  <Globe className="w-4 h-4 text-accent" />
                </a>
                 <div className="flex items-center space-x-5 pt-2">
+                <a href="https://youtube.com/@m5visaadvisors?si=iVoRuCIX3QMzz0Yl" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-red-600 hover:text-white transition-all">
+                  <Youtube className="w-4 h-4" />
+                </a>
+                <a href="https://x.com/m5visaadvisors" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-gray-800 hover:text-white transition-all">
+                  <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current" aria-hidden="true">
+                    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.29 19.497h2.039L6.486 3.24H4.298l13.313 17.41z" />
+                  </svg>
+                </a>
                 <a href="https://instagram.com/m5visaadvisors" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent hover:text-brand transition-all">
                   <Instagram className="w-4 h-4" />
                 </a>
@@ -88,8 +97,8 @@ export default function Footer() {
                 <span className="text-xs text-white/40 leading-relaxed font-light">60ft road, Suryapet, Telangana, 508213</span>
               </li>
               <li className="flex flex-col space-y-1">
-                <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">Hyderabad</span>
-                <span className="text-xs text-white/40 leading-relaxed font-light">Banjara Hills, Hyderabad</span>
+                <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">Hyderabad Branch</span>
+                <span className="text-xs text-white/40 leading-relaxed font-light">Kuntloor, Hayathnagar, Hyderabad, Telangana, 501505.</span>
               </li>
               <li className="flex flex-col space-y-1">
                 <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">London (UK)</span>
@@ -113,21 +122,16 @@ export default function Footer() {
                 <div className="text-white/40 text-[10px] font-bold uppercase tracking-widest">Support</div>
                 <div className="flex flex-col space-y-1">
                   <a href="mailto:info@m5visaadvisors.in" className="text-xs font-medium hover:text-accent transition-colors">info@m5visaadvisors.in</a>
-                  <a href="mailto:m5visaadvisors@gmail.com" className="text-xs font-medium hover:text-accent transition-colors opacity-50">m5visaadvisors@gmail.com</a>
                 </div>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-center items-center">
           <p className="text-[10px] font-bold text-white/20 uppercase tracking-[0.3em]">
             © 2026 M5 Visa Advisors. Top Quality Service.
           </p>
-          <div className="flex items-center space-x-8 text-[10px] font-bold text-white/20 uppercase tracking-[0.2em]">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-          </div>
         </div>
       </div>
     </footer>

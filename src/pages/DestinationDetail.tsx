@@ -161,7 +161,7 @@ const destinationData: Record<string, any> = {
   },
   spain: {
     name: 'Spain',
-    image: 'https://images.unsplash.com/photo-1583779457094-0cdcf221fd88?auto=format&fit=crop&q=80&w=1200',
+    image: 'https://images.unsplash.com/photo-1511527661048-7fe73d85e9a4?auto=format&fit=crop&q=80&w=1200',
     title: 'Study in Spain: Sun & Learning',
     description: 'Spain has some of the world\'s top business schools and a vibrant cultural experience for students.',
     features: ['Top Business Schools', 'Strong Alumni Networks', 'Vibrant Lifestyle', 'Schengen Access'],
@@ -213,7 +213,7 @@ const destinationData: Record<string, any> = {
   },
   malta: {
     name: 'Malta',
-    image: 'https://images.unsplash.com/photo-1516053303191-23097b6933b9?auto=format&fit=crop&q=80&w=1200',
+    image: 'https://images.unsplash.com/photo-1529680459049-bf0340fa0695?auto=format&fit=crop&q=80&w=1200',
     title: 'Study in Malta: Island Education',
     description: 'Malta is a safe, English-speaking destination in the heart of the Mediterranean with high quality education.',
     features: ['English Speaking', 'Mediterranean Lifestyle', 'Safe Environment', 'Lower Costs'],

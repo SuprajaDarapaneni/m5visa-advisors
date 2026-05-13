@@ -4,27 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>M5 Visa Advisors | Study & Tourist Visa Consultants</title>
-    <script>
-      (function() {
-        try {
-          const desc = Object.getOwnPropertyDescriptor(window, 'fetch');
-          console.log('Fetch descriptor:', desc);
-          if (desc && !desc.writable && !desc.set && desc.configurable) {
-            console.log('Attempting to patch fetch to be writable...');
-            const originalFetch = window.fetch;
-            Object.defineProperty(window, 'fetch', {
-              value: originalFetch,
-              writable: true,
-              configurable: true,
-              enumerable: true
-            });
-            console.log('Fetch patched successfully.');
-          }
-        } catch (e) {
-          console.error('Failed to patch fetch:', e);
-        }
-      })();
-    </script>
   </head>
   <body>
     <div id="root"></div>
