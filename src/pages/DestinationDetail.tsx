@@ -213,7 +213,7 @@ const destinationData: Record<string, any> = {
   },
   malta: {
     name: 'Malta',
-    image: 'https://images.unsplash.com/photo-1529680459049-bf0340fa0695?auto=format&fit=crop&q=80&w=1200',
+    image: 'https://images.unsplash.com/photo-1514483127413-f72f273478c3?auto=format&fit=crop&q=80&w=1200',
     title: 'Study in Malta: Island Education',
     description: 'Malta is a safe, English-speaking destination in the heart of the Mediterranean with high quality education.',
     features: ['English Speaking', 'Mediterranean Lifestyle', 'Safe Environment', 'Lower Costs'],
@@ -239,7 +239,7 @@ const destinationData: Record<string, any> = {
   },
   singapore: {
     name: 'Singapore',
-    image: 'https://images.unsplash.com/photo-1525625230556-8e8b7e9ed803?auto=format&fit=crop&q=80&w=1200',
+    image: 'https://images.unsplash.com/photo-1525596662741-e94ff9f26de1?auto=format&fit=crop&q=80&w=1200',
     title: 'Study in Singapore: Global Hub',
     description: 'Singapore combined eastern and western influences to provide a top-class education environment.',
     features: ['Asian Powerhouse', 'Safety and Cleanliness', 'Innovation Leader', 'Multicultural'],

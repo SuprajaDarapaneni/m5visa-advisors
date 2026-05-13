@@ -7,12 +7,12 @@ const destinations = [
   { id: 'uk', name: 'UK', universities: '100+ Institutions', image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=800' },
   { id: 'canada', name: 'Canada', universities: '80+ Institutions', image: 'https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&q=80&w=800' },
   { id: 'australia', name: 'Australia', universities: '40+ Institutions', image: 'https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&q=80&w=800' },
-  { id: 'singapore', name: 'Singapore', universities: '6+ Institutions', image: 'https://images.unsplash.com/photo-1525625230556-8e8b7e9ed803?auto=format&fit=crop&q=80&w=800' },
-  { id: 'malta', name: 'Malta', universities: '5+ Institutions', image: 'https://images.unsplash.com/photo-1529680459049-bf0340fa0695?auto=format&fit=crop&q=80&w=800' },
   { id: 'ireland', name: 'Ireland', universities: '20+ Institutions', image: 'https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?auto=format&fit=crop&q=80&w=800' },
   { id: 'spain', name: 'Spain', universities: '20+ Institutions', image: 'https://images.unsplash.com/photo-1511527661048-7fe73d85e9a4?auto=format&fit=crop&q=80&w=800' },
   { id: 'latvia', name: 'Latvia', universities: '10+ Institutions', image: 'https://images.unsplash.com/photo-1517736996303-4eec4a66bb17?auto=format&fit=crop&q=80&w=800' },
   { id: 'cyprus', name: 'Cyprus', universities: '8+ Institutions', image: 'https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?auto=format&fit=crop&q=80&w=800' },
+  { id: 'singapore', name: 'Singapore', universities: '6+ Institutions', image: 'https://images.unsplash.com/photo-1525596662741-e94ff9f26de1?auto=format&fit=crop&q=80&w=800' },
+  { id: 'malta', name: 'Malta', universities: '5+ Institutions', image: 'https://images.unsplash.com/photo-1514483127413-f72f273478c3?auto=format&fit=crop&q=80&w=800' },
 ];
 
 export default function Destinations() {

@@ -119,7 +119,7 @@ const destinations = [
     id: 'malta',
     name: 'Study in Malta', 
     universities: '5+ Institutions', 
-    image: 'https://images.unsplash.com/photo-1529680459049-bf0340fa0695?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1514483127413-f72f273478c3?auto=format&fit=crop&q=80&w=800',
     description: 'Malta is an English-speaking island nation with a growing reputation for high-quality higher education.'
   },
   { 
@@ -133,7 +133,7 @@ const destinations = [
     id: 'singapore',
     name: 'Study in Singapore', 
     universities: '6+ Institutions', 
-    image: 'https://images.unsplash.com/photo-1525625230556-8e8b7e9ed803?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1525596662741-e94ff9f26de1?auto=format&fit=crop&q=80&w=800',
     description: 'Singapore is a global hub for education, research, and innovation in the heart of Asia.'
   },
   { 
