@@ -32,7 +32,7 @@ export default function Footer() {
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-bold tracking-tighter leading-tight">
-                  M5 Visa Advisors <br /> (OPC Private Limited)
+                  M5 Visa Advisors <br /> (opc) private limited
                 </span>
                 <div className="mt-1.5 text-left">
                   <span className="text-[10px] font-black text-accent uppercase tracking-[0.22em] block italic border-l-2 border-accent pl-3">
