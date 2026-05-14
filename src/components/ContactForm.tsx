@@ -49,10 +49,10 @@ export default function ContactForm() {
                     <div className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-1">Inquiry</div>
                     <div className="flex flex-col space-y-1">
                       <div className="text-lg font-medium text-white/90 hover:text-accent transition-colors">
-                        <a href="tel:+919515354865">+91 95153 54865</a>
+                        <a href="tel:+918333075544">+91 83330 75544</a>
                       </div>
                       <div className="text-lg font-medium text-white/90 hover:text-accent transition-colors">
-                        <a href="tel:+918333075544">+91 83330 75544</a>
+                        <a href="tel:+919515354865">+91 95153 54865</a>
                       </div>
                     </div>
                   </div>

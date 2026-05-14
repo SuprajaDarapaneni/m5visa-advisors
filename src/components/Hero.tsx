@@ -35,7 +35,7 @@ export default function Hero() {
             
               <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-4">
                 <a 
-                  href="https://wa.me/919515354865?text=Hello%2C%20I%20would%20like%20to%20book%20a%20free%20consultation%20with%20M5%20Visa%20Advisors." 
+                  href="https://wa.me/918333075544?text=Hello%2C%20I%20would%20like%20to%20book%20a%20free%20consultation%20with%20M5%20Visa%20Advisors." 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto bg-brand text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl hover:shadow-brand/20 transition-all flex items-center justify-center group"
