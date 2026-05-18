@@ -17,7 +17,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-brand text-white pt-16 pb-12 relative overflow-hidden font-sans">
+    <footer className="bg-brand text-white pt-14 pb-6 relative overflow-hidden font-sans">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full -mr-48 -mt-48 blur-3xl" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full -ml-32 -mb-32 blur-2xl" />
@@ -31,8 +31,8 @@ export default function Footer() {
                 <img src="/logo.jpeg" alt="Logo" className="w-full h-full object-contain" />
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-bold tracking-tighter leading-tight">
-                  M5 Visa Advisors <br /> (opc) private limited
+                <span className="text-2xl font-bold tracking-tighter leading-tight">
+                  M5 Visa Advisors <br /> (OPC) Private Limited
                 </span>
                 <div className="mt-1.5 text-left">
                   <span className="text-[10px] font-black text-accent uppercase tracking-[0.22em] block italic border-l-2 border-accent pl-3">
@@ -44,17 +44,17 @@ export default function Footer() {
                 </span>
               </div>
             </Link>
-            
-            <p className="text-white/40 text-sm leading-relaxed font-light max-w-[240px]">
-              Helping students find the best global education paths and manage visa processes easily.
+
+            <p className="text-white/60 text-xs leading-relaxed font-light italic">
+              Creating global education opportunities for students through reliable study visa guidance and expanding M5 Visa Advisors across India and worldwide.
             </p>
             
-            <div className="space-y-4">
-               <a href="https://wa.me/918333075544" className="inline-flex items-center space-x-3 bg-white/5 hover:bg-white/10 px-6 py-3 rounded-full transition-all border border-white/5 hover:border-accent group">
-                 <span className="text-[10px] font-bold uppercase tracking-widest group-hover:text-accent transition-colors">Book Free Guide</span>
-                 <Globe className="w-4 h-4 text-accent" />
+            <div className="space-y-6 pt-4">
+               <a href="https://wa.me/918333075544" className="inline-flex items-center space-x-3 bg-white/5 hover:bg-white/10 px-8 py-3.5 rounded-full transition-all border border-white/10 hover:border-accent group shadow-lg">
+                 <span className="text-[11px] font-bold uppercase tracking-[0.2em] group-hover:text-accent transition-colors">Book Free Guide</span>
+                 <Globe className="w-4 h-4 text-accent animate-pulse" />
                </a>
-                <div className="flex items-center space-x-5 pt-2">
+                <div className="flex items-center space-x-6 pt-2">
                 <a href="https://youtube.com/@m5visaadvisors?si=iVoRuCIX3QMzz0Yl" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-red-600 hover:text-white transition-all">
                   <Youtube className="w-4 h-4" />
                 </a>
@@ -76,61 +76,58 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Collections - Countries */}
           <div className="lg:col-span-1">
             <h4 className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-6">Collections</h4>
-            <ul className="grid grid-cols-2 gap-x-4 gap-y-3">
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-3">
               {countries.map((country) => (
                 <li key={country}>
-                  <Link to="/destinations" className="text-white/40 hover:text-white transition-colors text-[10px] font-bold uppercase tracking-widest leading-tight block">{country}</Link>
+                  <Link to="/destinations" className="text-white/60 hover:text-accent transition-colors text-[10px] font-bold uppercase tracking-widest leading-tight block">{country}</Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Locations */}
           <div className="lg:col-span-1">
             <h4 className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-6">Our Locations</h4>
             <ul className="space-y-6">
-              <li className="flex flex-col space-y-1">
-                <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">Suryapet (Head Office)</span>
-                <span className="text-xs text-white/40 leading-relaxed font-light">60ft road, Suryapet, Telangana, 508213</span>
+              <li className="flex flex-col space-y-1.5 border-l border-white/10 pl-4">
+                <span className="text-accent text-[10px] font-bold uppercase tracking-widest">Suryapet (Head Office)</span>
+                <span className="text-xs text-white/70 leading-relaxed font-light">60ft road, Suryapet, Telangana, 508213</span>
               </li>
-              <li className="flex flex-col space-y-1">
-                <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">Hyderabad Branch</span>
-                <span className="text-xs text-white/40 leading-relaxed font-light">Kuntloor, Hayathnagar, Hyderabad, Telangana, 501505.</span>
+              <li className="flex flex-col space-y-1.5 border-l border-white/10 pl-4">
+                <span className="text-accent text-[10px] font-bold uppercase tracking-widest">Hyderabad Branch</span>
+                <span className="text-xs text-white/70 leading-relaxed font-light">Kuntloor, Hayathnagar, Hyderabad, Telangana, 501505.</span>
               </li>
-              <li className="flex flex-col space-y-1">
-                <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">London (UK)</span>
-                <span className="text-xs text-white/40 leading-relaxed font-light">Central London Office</span>
+              <li className="flex flex-col space-y-1.5 border-l border-white/10 pl-4">
+                <span className="text-accent text-[10px] font-bold uppercase tracking-widest">London (UK)</span>
+                <span className="text-xs text-white/70 leading-relaxed font-light">Central London Office</span>
               </li>
             </ul>
           </div>
 
-          {/* Contact */}
           <div className="lg:col-span-1">
             <h4 className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-6">Contact Us</h4>
             <ul className="space-y-6">
-              <li className="flex flex-col space-y-2">
-                <div className="text-white/40 text-[10px] font-bold uppercase tracking-widest">Phone Numbers</div>
-                <div className="flex flex-col space-y-1">
-                  <a href="tel:+918333075544" className="text-xs font-medium hover:text-accent transition-colors">+91 83330 75544</a>
-                  <a href="tel:+919515354865" className="text-xs font-medium hover:text-accent transition-colors">+91 95153 54865</a>
+              <li className="flex flex-col space-y-2 border-l border-white/10 pl-4">
+                <div className="text-white/40 text-[10px] font-bold uppercase tracking-widest mb-1">Phone Numbers</div>
+                <div className="flex flex-col space-y-2">
+                  <a href="tel:+918333075544" className="text-sm font-medium text-white/90 hover:text-accent transition-colors">+91 83330 75544</a>
+                  <a href="tel:+919515354865" className="text-sm font-medium text-white/90 hover:text-accent transition-colors">+91 95153 54865</a>
                 </div>
               </li>
-              <li className="flex flex-col space-y-2">
-                <div className="text-white/40 text-[10px] font-bold uppercase tracking-widest">Support</div>
+              <li className="flex flex-col space-y-2 border-l border-white/10 pl-4">
+                <div className="text-white/40 text-[10px] font-bold uppercase tracking-widest mb-1">Support</div>
                 <div className="flex flex-col space-y-1">
-                  <a href="mailto:info@m5visaadvisors.in" className="text-xs font-medium hover:text-accent transition-colors">info@m5visaadvisors.in</a>
+                  <a href="mailto:info@m5visaadvisors.in" className="text-sm font-medium text-white/90 hover:text-accent transition-colors">info@m5visaadvisors.in</a>
                 </div>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-center items-center">
-          <p className="text-[10px] font-bold text-white/20 uppercase tracking-[0.3em]">
-            © 2026 M5 Visa Advisors. Top Quality Service.
+        <div className="pt-6 border-t border-white/5 flex flex-col justify-center items-center text-center">
+          <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.4em]">
+            © 2026 M5 Visa Advisors
           </p>
         </div>
       </div>
