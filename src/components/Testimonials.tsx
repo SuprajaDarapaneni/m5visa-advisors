@@ -24,9 +24,9 @@ const reviews = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-12 bg-brand-light/30">
+    <section id="testimonials" className="py-8 bg-brand-light/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <h2 className="text-sm font-bold text-accent uppercase tracking-widest mb-4">Success Stories</h2>
           <h3 className="text-4xl font-bold text-brand uppercase tracking-tight">What Our Students Say</h3>
         </div>

@@ -44,9 +44,9 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-12 bg-white">
+    <section id="services" className="py-8 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-10">
           <div className="max-w-2xl">
             <h2 className="text-xs font-bold text-accent uppercase tracking-[0.3em] mb-6">Expert Help</h2>
             <h3 className="text-5xl lg:text-7xl font-medium text-brand mb-8 leading-tight">

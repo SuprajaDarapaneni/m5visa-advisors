@@ -32,9 +32,9 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-12 bg-brand-light/30 overflow-hidden">
+    <section id="how-it-works" className="py-8 bg-brand-light/30 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <h2 className="text-xs font-bold text-accent uppercase tracking-[0.3em] mb-4">Our Process</h2>
           <h3 className="text-5xl lg:text-7xl font-medium text-brand mb-8 leading-tight tracking-tighter">
             How it <span className="font-serif italic text-accent">Works</span>

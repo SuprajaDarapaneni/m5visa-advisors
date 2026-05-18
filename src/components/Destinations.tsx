@@ -17,9 +17,9 @@ const destinations = [
 
 export default function Destinations() {
   return (
-    <section id="destinations" className="py-16 bg-white overflow-hidden">
+    <section id="destinations" className="py-8 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10">
           <div className="max-w-xl">
             <h2 className="text-xs font-bold text-accent uppercase tracking-[0.3em] mb-6">Study Abroad</h2>
             <h3 className="text-5xl lg:text-7xl font-medium text-brand mb-0">

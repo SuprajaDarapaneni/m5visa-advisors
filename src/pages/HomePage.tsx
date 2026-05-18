@@ -13,13 +13,13 @@ export default function HomePage() {
       <Hero />
       <Stats />
       <Destinations />
-      <div className="bg-brand/5 py-12">
+      <div className="bg-brand/5 py-8">
         <About />
       </div>
       <HowItWorks />
       <Services />
       <Testimonials />
-      <div className="bg-white py-12 border-t border-brand/5">
+      <div className="bg-white py-8 border-t border-brand/5">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <div className="inline-block px-4 py-1.5 bg-brand/10 rounded-full text-brand text-xs font-bold uppercase tracking-[0.2em] mb-4">Get Started</div>
           <h2 className="text-4xl md:text-5xl font-serif text-brand mb-4 italic">Ready to Apply?</h2>
