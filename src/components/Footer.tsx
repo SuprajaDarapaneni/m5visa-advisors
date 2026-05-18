@@ -136,7 +136,7 @@ export default function Footer() {
 
         <div className="pt-4 border-t border-white/10 flex flex-col justify-center items-center text-center">
           <p className="text-[10px] font-bold text-white/40 uppercase tracking-[0.5em]">
-            © 2026 M5 Visa Advisors
+            © 2026 M5 Visa Advisors. All Rights Reserved.
           </p>
         </div>
       </div>
