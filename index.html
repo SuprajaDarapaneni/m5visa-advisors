@@ -3,11 +3,85 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Polyfill/Guard for window.fetch assignment in iframe/sandbox environments -->
+    <script>
+      (function() {
+        try {
+          var _origFetch = window.fetch;
+          var _currentFetch = _origFetch;
+          Object.defineProperty(window, 'fetch', {
+            get: function() {
+              return _currentFetch || _origFetch;
+            },
+            set: function(val) {
+              _currentFetch = val;
+            },
+            configurable: true,
+            enumerable: true
+          });
+        } catch (e) {
+          // Ignore if property is already defined or redefinition restricted
+        }
+      })();
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="/logo.jpeg" />
+
+    <!-- SEO -->
     <title>M5 Visa Advisors | Study & Tourist Visa Consultants</title>
+
+    <meta
+      name="description"
+      content="M5 Visa Advisors is a trusted Study Abroad and Tourist Visa consultancy providing expert guidance for USA, UK, Canada, Australia, Europe, IELTS coaching, SOP preparation, university admissions, and visa interview assistance."
+    />
+
+    <meta
+      name="keywords"
+      content="M5 Visa Advisors, Study Visa, Tourist Visa, Overseas Education, USA Study Visa, UK Study Visa, Canada Study Visa, Australia Study Visa, Europe Study Visa, IELTS, SOP, Visa Consultants"
+    />
+
+    <meta name="author" content="M5 Visa Advisors" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0D3B66" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="M5 Visa Advisors | Study & Tourist Visa Consultants" />
+    <meta
+      property="og:description"
+      content="Expert Study Abroad & Tourist Visa Consultants. Admissions, IELTS, SOP Guidance, and Visa Interview Preparation."
+    />
+    <meta property="og:image" content="/logo.jpeg" />
+    <meta property="og:url" content="https://yourdomain.com" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="M5 Visa Advisors | Study & Tourist Visa Consultants"
+    />
+    <meta
+      name="twitter:description"
+      content="Trusted consultants for Study Abroad and Tourist Visas."
+    />
+    <meta name="twitter:image" content="/logo.jpeg" />
+
+    <!-- Google Logo Schema -->
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"Organization",
+      "name":"M5 Visa Advisors",
+      "url":"https://yourdomain.com",
+      "logo":"https://yourdomain.com/logo.jpeg"
+    }
+    </script>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-
