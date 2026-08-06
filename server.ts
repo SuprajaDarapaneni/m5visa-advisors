@@ -85,8 +85,23 @@ async function startServer() {
     }
   });
 
-  // GET /api/reviews - Fetch all reviews from MongoDB
+  // GET /api/reviews - Fetch reviews from Render backend or local MongoDB
   app.get("/api/reviews", async (req, res) => {
+    try {
+      // First try fetching from live Render backend
+      const renderRes = await fetch("https://m5visa-advisors.onrender.com/api/reviews", {
+        signal: AbortSignal.timeout(6000),
+      });
+      if (renderRes.ok) {
+        const renderReviews = await renderRes.json();
+        if (Array.isArray(renderReviews) && renderReviews.length > 0) {
+          return res.json(renderReviews);
+        }
+      }
+    } catch (err) {
+      console.warn("Render backend fetch timed out or failed, falling back to direct MongoDB:", err);
+    }
+
     try {
       await connectDB();
       let reviews = await Review.find().lean();
@@ -143,16 +158,35 @@ async function startServer() {
     }
   });
 
-  // POST /api/reviews - Save a new review to MongoDB
+  // POST /api/reviews - Save a new review to Render backend and local MongoDB
   app.post("/api/reviews", async (req, res) => {
+    const { name, country, rating, text, image, date } = req.body;
+
+    if (!name || !text) {
+      return res.status(400).json({ error: "Name and text are required." });
+    }
+
+    let savedReviewFromRender = null;
+
+    // 1. Post to Render backend
+    try {
+      const renderRes = await fetch("https://m5visa-advisors.onrender.com/api/reviews", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, country, rating, text, image, date }),
+        signal: AbortSignal.timeout(8000),
+      });
+      if (renderRes.ok) {
+        savedReviewFromRender = await renderRes.json();
+      }
+    } catch (err) {
+      console.warn("Posting to Render backend failed or timed out:", err);
+    }
+
+    // 2. Also save to direct MongoDB connection for safety
+    let savedLocal = null;
     try {
       await connectDB();
-      const { name, country, rating, text, image, date } = req.body;
-
-      if (!name || !text) {
-        return res.status(400).json({ error: "Name and text are required." });
-      }
-
       const newReview = new Review({
         name,
         country: country || "USA",
@@ -167,12 +201,17 @@ async function startServer() {
             year: "numeric",
           }),
       });
-
-      const saved = await newReview.save();
-      res.status(201).json(saved);
+      savedLocal = await newReview.save();
     } catch (error) {
-      console.error("Error saving review to MongoDB:", error);
-      res.status(500).json({ error: "Failed to save review to database" });
+      console.error("Error saving review to local MongoDB connection:", error);
+    }
+
+    if (savedReviewFromRender) {
+      return res.status(201).json(savedReviewFromRender);
+    } else if (savedLocal) {
+      return res.status(201).json(savedLocal);
+    } else {
+      return res.status(500).json({ error: "Failed to save review to database" });
     }
   });
 
@@ -183,7 +222,7 @@ async function startServer() {
       server: { middlewareMode: true },
       appType: "spa",
     });
-    app.use(vite.middlewares);
+    app.use(vite.middlewares);z
   } else {
     const distPath = path.join(process.cwd(), "dist");
     app.use(express.static(distPath));
