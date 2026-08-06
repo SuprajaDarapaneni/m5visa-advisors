@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Quote, Star, Plus, X, CheckCircle2, MessageSquarePlus, User, Sparkles, Send, Upload, Image as ImageIcon, Loader2 } from 'lucide-react';
+import { Quote, Star, Plus, X, CheckCircle2, MessageSquarePlus, User, Sparkles, Send, Upload, Image as ImageIcon, Loader2, ChevronLeft, ChevronRight, LayoutGrid, SlidersHorizontal } from 'lucide-react';
 
 export interface ReviewItem {
   id?: string;
@@ -60,6 +60,22 @@ export default function Testimonials() {
   const [reviews, setReviews] = useState<ReviewItem[]>(DEFAULT_REVIEWS);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [viewMode, setViewMode] = useState<'carousel' | 'grid'>('carousel');
+
+  // Scroll Container Ref
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -380, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 380, behavior: 'smooth' });
+    }
+  };
 
   // Form State
   const [name, setName] = useState('');
@@ -178,12 +194,14 @@ export default function Testimonials() {
 
         if (uploadRes.ok) {
           const uploadData = await uploadRes.json();
-          uploadedImageUrl = uploadData.url || '';
+          uploadedImageUrl = uploadData.url || previewUrl;
         } else {
-          console.warn('Image upload failed, proceeding without image');
+          console.warn('Cloudinary upload returned non-ok status, falling back to base64 preview URL');
+          uploadedImageUrl = previewUrl;
         }
       } catch (uploadErr) {
         console.error('Cloudinary upload error:', uploadErr);
+        uploadedImageUrl = previewUrl;
       } finally {
         setIsUploadingImage(false);
       }
@@ -194,7 +212,7 @@ export default function Testimonials() {
       country,
       rating,
       text: text.trim(),
-      image: uploadedImageUrl, // Cloudinary image URL if uploaded, else empty string
+      image: uploadedImageUrl, // Cloudinary image URL if uploaded, or base64 preview URL fallback
       date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
     };
 
@@ -250,6 +268,13 @@ export default function Testimonials() {
     setSelectedFile(null);
     setPreviewUrl(null);
 
+    // Scroll container to the beginning to show the new review
+    setTimeout(() => {
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
+      }
+    }, 150);
+
     // Auto dismiss success toast after 5s
     setTimeout(() => {
       setShowSuccessMessage(false);
@@ -267,7 +292,7 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header & Stats Bar */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-6">
           <div>
             <div className="inline-flex items-center space-x-2 px-3 py-1 bg-accent/10 rounded-full mb-3">
               <Sparkles className="w-3.5 h-3.5 text-accent" />
@@ -288,13 +313,64 @@ export default function Testimonials() {
             </div>
           </div>
 
-          <button
-            onClick={() => setIsFormOpen(true)}
-            className="inline-flex items-center space-x-2 bg-brand text-white hover:bg-brand/90 px-6 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 group self-start md:self-auto cursor-pointer"
-          >
-            <MessageSquarePlus className="w-4 h-4 text-accent group-hover:scale-110 transition-transform" />
-            <span>Write a Review</span>
-          </button>
+          <div className="flex flex-wrap items-center gap-3">
+            {/* View Mode Toggle Buttons */}
+            <div className="bg-white/80 backdrop-blur border border-brand/10 p-1 rounded-full flex items-center shadow-sm">
+              <button
+                onClick={() => setViewMode('carousel')}
+                className={`px-3.5 py-2 rounded-full text-xs font-bold uppercase tracking-wider flex items-center space-x-1.5 transition-all cursor-pointer ${
+                  viewMode === 'carousel'
+                    ? 'bg-brand text-white shadow-md'
+                    : 'text-brand/60 hover:text-brand'
+                }`}
+                title="Scrolling Carousel View"
+              >
+                <SlidersHorizontal className="w-3.5 h-3.5 text-accent" />
+                <span>Slider</span>
+              </button>
+              <button
+                onClick={() => setViewMode('grid')}
+                className={`px-3.5 py-2 rounded-full text-xs font-bold uppercase tracking-wider flex items-center space-x-1.5 transition-all cursor-pointer ${
+                  viewMode === 'grid'
+                    ? 'bg-brand text-white shadow-md'
+                    : 'text-brand/60 hover:text-brand'
+                }`}
+                title="Scrollable Grid View"
+              >
+                <LayoutGrid className="w-3.5 h-3.5 text-accent" />
+                <span>Grid</span>
+              </button>
+            </div>
+
+            {/* Scroll Navigation Arrows */}
+            {viewMode === 'carousel' && (
+              <div className="flex items-center space-x-2">
+                <button
+                  onClick={scrollLeft}
+                  className="w-10 h-10 rounded-full bg-white hover:bg-brand hover:text-white border border-brand/10 text-brand shadow-sm flex items-center justify-center transition-all cursor-pointer active:scale-95"
+                  aria-label="Scroll left"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={scrollRight}
+                  className="w-10 h-10 rounded-full bg-white hover:bg-brand hover:text-white border border-brand/10 text-brand shadow-sm flex items-center justify-center transition-all cursor-pointer active:scale-95"
+                  aria-label="Scroll right"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
+            )}
+
+            {/* Write a Review Button */}
+            <button
+              onClick={() => setIsFormOpen(true)}
+              className="inline-flex items-center space-x-2 bg-brand text-white hover:bg-brand/90 px-6 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 group cursor-pointer"
+            >
+              <MessageSquarePlus className="w-4 h-4 text-accent group-hover:scale-110 transition-transform" />
+              <span>Write a Review</span>
+            </button>
+          </div>
         </div>
 
         {/* Success Toast Banner */}
@@ -310,12 +386,12 @@ export default function Testimonials() {
                 <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
                 <div>
                   <p className="font-bold text-sm">Thank you for your feedback!</p>
-                  <p className="text-xs text-emerald-700">Your review has been published and saved to our database.</p>
+                  <p className="text-xs text-emerald-700">Your review has been published and saved.</p>
                 </div>
               </div>
               <button
                 onClick={() => setShowSuccessMessage(false)}
-                className="text-emerald-500 hover:text-emerald-800 p-1"
+                className="text-emerald-500 hover:text-emerald-800 p-1 cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -438,7 +514,7 @@ export default function Testimonials() {
                   <div>
                     <div className="flex items-center justify-between mb-1.5">
                       <label className="block text-xs font-bold uppercase tracking-wider text-brand/70">
-                        Upload Profile Photo <span className="text-brand/40 font-normal lowercase">(optional)</span>
+                        Upload Profile / Review Photo <span className="text-brand/40 font-normal lowercase">(optional)</span>
                       </label>
                       <span className="text-[10px] text-brand/40">Cloudinary Powered</span>
                     </div>
@@ -530,98 +606,201 @@ export default function Testimonials() {
           )}
         </AnimatePresence>
 
-        {/* Reviews Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
-          {reviews.map((review, index) => {
-            const initialLetter = (review.name || 'S').charAt(0).toUpperCase();
-            return (
-              <motion.div
-                key={review.id || review.name + index}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: Math.min(index * 0.08, 0.4) }}
-                className="bg-white p-8 rounded-3xl shadow-lg shadow-brand/5 relative flex flex-col justify-between border border-brand/5 hover:border-brand/15 transition-all"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex">
-                      {[...Array(review.rating || 5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 text-orange-400 fill-orange-400" />
-                      ))}
-                    </div>
-
-                    {review.isCustom ? (
-                      <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 uppercase tracking-widest">
-                        Verified Student
-                      </span>
-                    ) : (
-                      <Quote className="w-8 h-8 text-brand/10" />
-                    )}
-                  </div>
-
-                  {/* If student uploaded a photo with their review, display it prominently near the review text */}
-                  {review.image && review.image.trim() !== '' && (
-                    <div className="mb-4 overflow-hidden rounded-2xl border border-brand/10 bg-brand-light/30 shadow-sm relative group/img">
-                      <img
-                        src={review.image}
-                        alt={`${review.name}'s photo`}
-                        className="w-full h-48 object-cover group-hover/img:scale-105 transition-transform duration-300"
-                        onError={(e) => {
-                          const parent = (e.target as HTMLElement).parentElement;
-                          if (parent) parent.style.display = 'none';
-                        }}
-                      />
-                      <div className="absolute bottom-2.5 left-2.5 bg-black/60 backdrop-blur-md text-white px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase flex items-center space-x-1.5 shadow">
-                        <ImageIcon className="w-3.5 h-3.5 text-accent" />
-                        <span>Uploaded Photo</span>
-                      </div>
-                    </div>
-                  )}
-
-                  <p className="text-brand/80 italic mb-6 leading-relaxed text-sm sm:text-base">
-                    "{review.text}"
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-between pt-4 border-t border-brand/5">
-                  <div className="flex items-center space-x-3">
-                    {review.image && review.image.trim() !== '' ? (
-                      <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-accent/40 bg-brand/5 flex items-center justify-center font-bold text-brand flex-shrink-0 shadow-md">
-                        <img
-                          src={review.image}
-                          alt={review.name}
-                          className="w-full h-full object-cover"
-                          onError={(e) => {
-                            (e.target as HTMLElement).style.display = 'none';
-                            const parent = (e.target as HTMLElement).parentElement;
-                            if (parent) {
-                              parent.innerHTML = `<span class="text-accent font-bold text-base">${initialLetter}</span>`;
-                              parent.className = "w-11 h-11 rounded-full bg-brand border-2 border-accent/20 flex items-center justify-center flex-shrink-0 shadow-sm";
-                            }
-                          }}
-                        />
-                      </div>
-                    ) : (
-                      /* Clean Name Initial Badge if user didn't upload photo */
-                      <div className="w-11 h-11 rounded-full bg-brand text-accent font-bold text-base border-2 border-accent/20 flex items-center justify-center flex-shrink-0 shadow-sm">
-                        <span>{initialLetter}</span>
-                      </div>
-                    )}
+        {/* Reviews Container - Horizontal Carousel or Scrollable Grid */}
+        <div className="relative group">
+          {viewMode === 'carousel' ? (
+            <div
+              ref={scrollContainerRef}
+              className="flex overflow-x-auto gap-6 pb-6 pt-2 snap-x snap-mandatory custom-scrollbar scroll-smooth"
+            >
+              {reviews.map((review, index) => {
+                const initialLetter = (review.name || 'S').charAt(0).toUpperCase();
+                return (
+                  <motion.div
+                    key={review.id || review.name + index}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: Math.min(index * 0.08, 0.4) }}
+                    className="w-[300px] sm:w-[360px] md:w-[390px] flex-shrink-0 snap-start bg-white p-7 rounded-3xl shadow-lg shadow-brand/5 relative flex flex-col justify-between border border-brand/5 hover:border-brand/15 transition-all"
+                  >
                     <div>
-                      <div className="font-bold text-brand text-sm">{review.name}</div>
-                      <div className="text-xs text-brand/50 font-medium">Study in {review.country}</div>
-                    </div>
-                  </div>
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex">
+                          {[...Array(review.rating || 5)].map((_, i) => (
+                            <Star key={i} className="w-4 h-4 text-orange-400 fill-orange-400" />
+                          ))}
+                        </div>
 
-                  {review.date && (
-                    <span className="text-[10px] text-brand/40 font-medium">
-                      {review.date}
-                    </span>
-                  )}
-                </div>
-              </motion.div>
-            );
-          })}
+                        {review.isCustom ? (
+                          <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 uppercase tracking-widest">
+                            Verified Student
+                          </span>
+                        ) : (
+                          <Quote className="w-8 h-8 text-brand/10" />
+                        )}
+                      </div>
+
+                      {/* If student uploaded a photo with their review, display it prominently near the review text */}
+                      {review.image && review.image.trim() !== '' && (
+                        <div className="mb-4 overflow-hidden rounded-2xl border border-brand/10 bg-brand-light/30 shadow-sm relative group/img">
+                          <img
+                            src={review.image}
+                            alt={`${review.name}'s photo`}
+                            className="w-full h-44 object-cover group-hover/img:scale-105 transition-transform duration-300"
+                            onError={(e) => {
+                              const parent = (e.target as HTMLElement).parentElement;
+                              if (parent) parent.style.display = 'none';
+                            }}
+                          />
+                          <div className="absolute bottom-2.5 left-2.5 bg-black/60 backdrop-blur-md text-white px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase flex items-center space-x-1.5 shadow">
+                            <ImageIcon className="w-3.5 h-3.5 text-accent" />
+                            <span>Uploaded Photo</span>
+                          </div>
+                        </div>
+                      )}
+
+                      <p className="text-brand/80 italic mb-6 leading-relaxed text-sm sm:text-base">
+                        "{review.text}"
+                      </p>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-4 border-t border-brand/5">
+                      <div className="flex items-center space-x-3">
+                        {review.image && review.image.trim() !== '' ? (
+                          <div className="w-11 h-11 rounded-full overflow-hidden border-2 border-accent/40 bg-brand/5 flex items-center justify-center font-bold text-brand flex-shrink-0 shadow-md">
+                            <img
+                              src={review.image}
+                              alt={review.name}
+                              className="w-full h-full object-cover"
+                              onError={(e) => {
+                                (e.target as HTMLElement).style.display = 'none';
+                                const parent = (e.target as HTMLElement).parentElement;
+                                if (parent) {
+                                  parent.innerHTML = `<span class="text-accent font-bold text-base">${initialLetter}</span>`;
+                                  parent.className = "w-11 h-11 rounded-full bg-brand border-2 border-accent/20 flex items-center justify-center flex-shrink-0 shadow-sm";
+                                }
+                              }}
+                            />
+                          </div>
+                        ) : (
+                          /* Clean Name Initial Badge if user didn't upload photo */
+                          <div className="w-11 h-11 rounded-full bg-brand text-accent font-bold text-base border-2 border-accent/20 flex items-center justify-center flex-shrink-0 shadow-sm">
+                            <span>{initialLetter}</span>
+                          </div>
+                        )}
+                        <div>
+                          <div className="font-bold text-brand text-sm">{review.name}</div>
+                          <div className="text-xs text-brand/50 font-medium">Study in {review.country}</div>
+                        </div>
+                      </div>
+
+                      {review.date && (
+                        <span className="text-[10px] text-brand/40 font-medium">
+                          {review.date}
+                        </span>
+                      )}
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          ) : (
+            /* Scrollable Grid View */
+            <div
+              ref={scrollContainerRef}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-h-[650px] overflow-y-auto pr-2 custom-scrollbar p-1"
+            >
+              {reviews.map((review, index) => {
+                const initialLetter = (review.name || 'S').charAt(0).toUpperCase();
+                return (
+                  <motion.div
+                    key={review.id || review.name + index}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="bg-white p-7 rounded-3xl shadow-lg shadow-brand/5 relative flex flex-col justify-between border border-brand/5 hover:border-brand/15 transition-all"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex">
+                          {[...Array(review.rating || 5)].map((_, i) => (
+                            <Star key={i} className="w-4 h-4 text-orange-400 fill-orange-400" />
+                          ))}
+                        </div>
+
+                        {review.isCustom ? (
+                          <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 uppercase tracking-widest">
+                            Verified Student
+                          </span>
+                        ) : (
+                          <Quote className="w-8 h-8 text-brand/10" />
+                        )}
+                      </div>
+
+                      {/* If student uploaded a photo with their review, display it prominently near the review text */}
+                      {review.image && review.image.trim() !== '' && (
+                        <div className="mb-4 overflow-hidden rounded-2xl border border-brand/10 bg-brand-light/30 shadow-sm relative group/img">
+                          <img
+                            src={review.image}
+                            alt={`${review.name}'s photo`}
+                            className="w-full h-44 object-cover group-hover/img:scale-105 transition-transform duration-300"
+                            onError={(e) => {
+                              const parent = (e.target as HTMLElement).parentElement;
+                              if (parent) parent.style.display = 'none';
+                            }}
+                          />
+                          <div className="absolute bottom-2.5 left-2.5 bg-black/60 backdrop-blur-md text-white px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase flex items-center space-x-1.5 shadow">
+                            <ImageIcon className="w-3.5 h-3.5 text-accent" />
+                            <span>Uploaded Photo</span>
+                          </div>
+                        </div>
+                      )}
+
+                      <p className="text-brand/80 italic mb-6 leading-relaxed text-sm sm:text-base">
+                        "{review.text}"
+                      </p>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-4 border-t border-brand/5">
+                      <div className="flex items-center space-x-3">
+                        {review.image && review.image.trim() !== '' ? (
+                          <div className="w-11 h-11 rounded-full overflow-hidden border-2 border-accent/40 bg-brand/5 flex items-center justify-center font-bold text-brand flex-shrink-0 shadow-md">
+                            <img
+                              src={review.image}
+                              alt={review.name}
+                              className="w-full h-full object-cover"
+                              onError={(e) => {
+                                (e.target as HTMLElement).style.display = 'none';
+                                const parent = (e.target as HTMLElement).parentElement;
+                                if (parent) {
+                                  parent.innerHTML = `<span class="text-accent font-bold text-base">${initialLetter}</span>`;
+                                  parent.className = "w-11 h-11 rounded-full bg-brand border-2 border-accent/20 flex items-center justify-center flex-shrink-0 shadow-sm";
+                                }
+                              }}
+                            />
+                          </div>
+                        ) : (
+                          <div className="w-11 h-11 rounded-full bg-brand text-accent font-bold text-base border-2 border-accent/20 flex items-center justify-center flex-shrink-0 shadow-sm">
+                            <span>{initialLetter}</span>
+                          </div>
+                        )}
+                        <div>
+                          <div className="font-bold text-brand text-sm">{review.name}</div>
+                          <div className="text-xs text-brand/50 font-medium">Study in {review.country}</div>
+                        </div>
+                      </div>
+
+                      {review.date && (
+                        <span className="text-[10px] text-brand/40 font-medium">
+                          {review.date}
+                        </span>
+                      )}
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          )}
         </div>
 
       </div>

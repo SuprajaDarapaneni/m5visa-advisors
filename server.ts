@@ -4,10 +4,21 @@ import mongoose from "mongoose";
 import { v2 as cloudinary } from "cloudinary";
 
 // Configure Cloudinary with user credentials
+let cloudName = process.env.CLOUDINARY_CLOUD_NAME || "dz5noprbz";
+let apiKey = process.env.CLOUDINARY_API_KEY || "571313168125116";
+let apiSecret = process.env.CLOUDINARY_API_SECRET || "PvZfrwMxJITMJZNeTywsn3sj6B8";
+
+// Handle swapped env vars if key and secret are reversed
+if (apiKey.length > 20 && /^\d+$/.test(apiSecret)) {
+  const temp = apiKey;
+  apiKey = apiSecret;
+  apiSecret = temp;
+}
+
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME || "dz5noprbz",
-  api_key: process.env.CLOUDINARY_API_KEY || "571313168125116",
-  api_secret: process.env.CLOUDINARY_API_SECRET || "PvZfrwMxJITMJZNeTywsn3sj6B8",
+  cloud_name: cloudName,
+  api_key: apiKey,
+  api_secret: apiSecret,
 });
 
 const MONGODB_URI =
