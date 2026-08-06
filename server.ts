@@ -89,7 +89,53 @@ async function startServer() {
   app.get("/api/reviews", async (req, res) => {
     try {
       await connectDB();
-      const reviews = await Review.find().sort({ createdAt: -1 }).lean();
+      let reviews = await Review.find().lean();
+
+      // Also check if any documents exist in 'm5visaadvisors' collection
+      if (mongoose.connection.db) {
+        const altDocs = await mongoose.connection.db.collection("m5visaadvisors").find().toArray();
+        if (altDocs && altDocs.length > 0) {
+          const existingIds = new Set(reviews.map((r: any) => r._id.toString()));
+          for (const doc of altDocs) {
+            if (!existingIds.has(doc._id.toString())) {
+              reviews.push(doc as any);
+            }
+          }
+        }
+      }
+
+      if (reviews.length === 0) {
+        const initialSeed = [
+          {
+            name: "Nikitha",
+            country: "USA",
+            rating: 5,
+            text: "M5 Visa Advisors made my application process for the USA incredibly smooth. Their attention to detail on my SOP was a game changer.",
+            image: "",
+            date: "Aug 1, 2026",
+            createdAt: new Date("2026-08-01T10:00:00Z")
+          },
+          {
+            name: "Praneetha",
+            country: "UK",
+            rating: 5,
+            text: "From IELTS prep to post-arrival support in the UK, M5 Visa Advisors was with me every step. Highly recommended for any aspirant.",
+            image: "",
+            date: "Aug 3, 2026",
+            createdAt: new Date("2026-08-03T10:00:00Z")
+          }
+        ];
+        await Review.insertMany(initialSeed);
+        reviews = await Review.find().lean();
+      }
+
+      // Sort by createdAt or date descending
+      reviews.sort((a: any, b: any) => {
+        const tA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+        const tB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+        return tB - tA;
+      });
+
       res.json(reviews);
     } catch (error) {
       console.error("Error fetching reviews from MongoDB:", error);
