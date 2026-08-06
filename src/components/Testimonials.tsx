@@ -100,6 +100,15 @@ export default function Testimonials() {
 
   // Load reviews from MongoDB backend and localStorage fallback
   useEffect(() => {
+    const handleOpenModal = () => {
+      setIsFormOpen(true);
+      const testimonialsElem = document.getElementById('testimonials') || document.getElementById('reviews');
+      if (testimonialsElem) {
+        testimonialsElem.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+    window.addEventListener('open-review-modal', handleOpenModal);
+
     async function fetchMongoReviews() {
       try {
         const res = await fetch('/api/reviews');
@@ -134,6 +143,10 @@ export default function Testimonials() {
     }
 
     fetchMongoReviews();
+
+    return () => {
+      window.removeEventListener('open-review-modal', handleOpenModal);
+    };
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -546,7 +559,26 @@ export default function Testimonials() {
                     )}
                   </div>
 
-                  <p className="text-brand/80 italic mb-8 leading-relaxed text-sm sm:text-base">
+                  {/* If student uploaded a photo with their review, display it prominently near the review text */}
+                  {review.image && review.image.trim() !== '' && (
+                    <div className="mb-4 overflow-hidden rounded-2xl border border-brand/10 bg-brand-light/30 shadow-sm relative group/img">
+                      <img
+                        src={review.image}
+                        alt={`${review.name}'s photo`}
+                        className="w-full h-48 object-cover group-hover/img:scale-105 transition-transform duration-300"
+                        onError={(e) => {
+                          const parent = (e.target as HTMLElement).parentElement;
+                          if (parent) parent.style.display = 'none';
+                        }}
+                      />
+                      <div className="absolute bottom-2.5 left-2.5 bg-black/60 backdrop-blur-md text-white px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase flex items-center space-x-1.5 shadow">
+                        <ImageIcon className="w-3.5 h-3.5 text-accent" />
+                        <span>Uploaded Photo</span>
+                      </div>
+                    </div>
+                  )}
+
+                  <p className="text-brand/80 italic mb-6 leading-relaxed text-sm sm:text-base">
                     "{review.text}"
                   </p>
                 </div>
@@ -554,13 +586,12 @@ export default function Testimonials() {
                 <div className="flex items-center justify-between pt-4 border-t border-brand/5">
                   <div className="flex items-center space-x-3">
                     {review.image && review.image.trim() !== '' ? (
-                      <div className="w-11 h-11 rounded-full overflow-hidden border-2 border-brand/10 bg-brand/5 flex items-center justify-center font-bold text-brand flex-shrink-0">
+                      <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-accent/40 bg-brand/5 flex items-center justify-center font-bold text-brand flex-shrink-0 shadow-md">
                         <img
                           src={review.image}
                           alt={review.name}
                           className="w-full h-full object-cover"
                           onError={(e) => {
-                            // If image fails to load, replace with initial letter
                             (e.target as HTMLElement).style.display = 'none';
                             const parent = (e.target as HTMLElement).parentElement;
                             if (parent) {
