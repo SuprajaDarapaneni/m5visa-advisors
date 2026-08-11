@@ -13,6 +13,7 @@ import ServicesPage from './pages/ServicesPage';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
+import ReviewModal from './components/ReviewModal';
 
 export default function App() {
   return (
@@ -31,6 +32,7 @@ export default function App() {
         </main>
         <Footer />
         <FloatingActions />
+        <ReviewModal />
       </div>
     </Router>
   );

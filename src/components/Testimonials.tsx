@@ -40,7 +40,7 @@ const DEFAULT_REVIEWS: ReviewItem[] = [
   }
 ];
 
-const COUNTRIES_LIST = [
+const STUDY_COUNTRIES = [
   'USA',
   'UK',
   'Canada',
@@ -53,13 +53,30 @@ const COUNTRIES_LIST = [
   'Austria',
   'Switzerland',
   'Dubai / UAE',
-  'Other'
+  'Other Country'
 ];
+
+const TOURIST_REGIONS = [
+  'Tourist Visa - USA',
+  'Tourist Visa - UK',
+  'Tourist Visa - Europe (Schengen)',
+  'Tourist Visa - Middle East / Dubai',
+  'Tourist Visa - Canada',
+  'Tourist Visa - Australia',
+  'Tourist Visa - Other Region'
+];
+
+const formatReviewSubtitle = (c: string) => {
+  if (!c) return 'Verified Client';
+  if (c.toLowerCase().includes('tourist') || c.toLowerCase().includes('visa')) {
+    return c;
+  }
+  return `Study in ${c}`;
+};
 
 export default function Testimonials() {
   const [reviews, setReviews] = useState<ReviewItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isFormOpen, setIsFormOpen] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [viewMode, setViewMode] = useState<'carousel' | 'grid'>('carousel');
 
@@ -78,53 +95,36 @@ export default function Testimonials() {
     }
   };
 
-  // Form State
-  const [name, setName] = useState('');
-  const [country, setCountry] = useState('USA');
-  const [rating, setRating] = useState(5);
-  const [hoverRating, setHoverRating] = useState(0);
-  const [text, setText] = useState('');
-  
-  // Optional Image Upload State
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  const [isUploadingImage, setIsUploadingImage] = useState(false);
-
-  const [error, setError] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // Handle File Selection
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      if (file.size > 5 * 1024 * 1024) { // 5MB limit
-        setError('Image file size should be less than 5MB.');
-        return;
-      }
-      setSelectedFile(file);
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewUrl(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const removeSelectedImage = () => {
-    setSelectedFile(null);
-    setPreviewUrl(null);
-  };
-
   // Load reviews from MongoDB backend and localStorage fallback
   useEffect(() => {
     const handleOpenModal = () => {
-      setIsFormOpen(true);
-      const testimonialsElem = document.getElementById('testimonials') || document.getElementById('reviews');
-      if (testimonialsElem) {
-        testimonialsElem.scrollIntoView({ behavior: 'smooth' });
+      window.dispatchEvent(new CustomEvent('open-review-modal'));
+    };
+
+    const handleReviewSubmitted = (e: any) => {
+      if (e.detail) {
+        const newDoc = {
+          ...e.detail,
+          id: e.detail._id || e.detail.id || `review-${Date.now()}`,
+          isCustom: true
+        };
+        setReviews(prev => [newDoc, ...prev]);
+        setShowSuccessMessage(true);
+
+        setTimeout(() => {
+          if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
+          }
+        }, 150);
+
+        setTimeout(() => {
+          setShowSuccessMessage(false);
+        }, 5000);
       }
     };
+
     window.addEventListener('open-review-modal', handleOpenModal);
+    window.addEventListener('review-submitted', handleReviewSubmitted);
 
     async function fetchMongoReviews() {
       setIsLoading(true);
@@ -167,124 +167,9 @@ export default function Testimonials() {
 
     return () => {
       window.removeEventListener('open-review-modal', handleOpenModal);
+      window.removeEventListener('review-submitted', handleReviewSubmitted);
     };
   }, []);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-
-    if (!name.trim()) {
-      setError('Please enter your full name.');
-      return;
-    }
-    if (!text.trim() || text.trim().length < 10) {
-      setError('Please share a review with at least 10 characters.');
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    let uploadedImageUrl = '';
-
-    // Upload image to Cloudinary via server endpoint if provided
-    if (previewUrl) {
-      setIsUploadingImage(true);
-      try {
-        const uploadRes = await fetch('/api/upload', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ image: previewUrl }),
-        });
-
-        if (uploadRes.ok) {
-          const uploadData = await uploadRes.json();
-          uploadedImageUrl = uploadData.url || previewUrl;
-        } else {
-          console.warn('Cloudinary upload returned non-ok status, falling back to base64 preview URL');
-          uploadedImageUrl = previewUrl;
-        }
-      } catch (uploadErr) {
-        console.error('Cloudinary upload error:', uploadErr);
-        uploadedImageUrl = previewUrl;
-      } finally {
-        setIsUploadingImage(false);
-      }
-    }
-
-    const reviewData = {
-      name: name.trim(),
-      country,
-      rating,
-      text: text.trim(),
-      image: uploadedImageUrl, // Cloudinary image URL if uploaded, or base64 preview URL fallback
-      date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
-    };
-
-    let newReview: ReviewItem = {
-      ...reviewData,
-      id: `review-${Date.now()}`,
-      isCustom: true,
-    };
-
-    try {
-      const res = await fetch('/api/reviews', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(reviewData),
-      });
-
-      if (res.ok) {
-        const savedDoc = await res.json();
-        newReview = {
-          ...savedDoc,
-          id: savedDoc._id || savedDoc.id,
-          isCustom: true,
-        };
-      }
-    } catch (err) {
-      console.warn('API submission failed, falling back to local storage', err);
-    }
-
-    // Save to local state and localStorage backup
-    try {
-      const existingSaved = localStorage.getItem('m5_user_reviews');
-      let customList: ReviewItem[] = [];
-      if (existingSaved) {
-        customList = JSON.parse(existingSaved);
-      }
-      const updatedCustomList = [newReview, ...customList];
-      localStorage.setItem('m5_user_reviews', JSON.stringify(updatedCustomList));
-    } catch (e) {
-      console.error('Failed to save to localStorage backup', e);
-    }
-
-    setReviews((prev) => [newReview, ...prev]);
-
-    setIsSubmitting(false);
-    setIsFormOpen(false);
-    setShowSuccessMessage(true);
-
-    // Reset form
-    setName('');
-    setCountry('USA');
-    setRating(5);
-    setText('');
-    setSelectedFile(null);
-    setPreviewUrl(null);
-
-    // Scroll container to the beginning to show the new review
-    setTimeout(() => {
-      if (scrollContainerRef.current) {
-        scrollContainerRef.current.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
-      }
-    }, 150);
-
-    // Auto dismiss success toast after 5s
-    setTimeout(() => {
-      setShowSuccessMessage(false);
-    }, 5000);
-  };
 
   // Calculate average rating
   const totalReviewsCount = reviews.length;
@@ -369,7 +254,7 @@ export default function Testimonials() {
 
             {/* Write a Review Button */}
             <button
-              onClick={() => setIsFormOpen(true)}
+              onClick={() => window.dispatchEvent(new CustomEvent('open-review-modal'))}
               className="inline-flex items-center space-x-2 bg-brand text-white hover:bg-brand/90 px-6 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 group cursor-pointer"
             >
               <MessageSquarePlus className="w-4 h-4 text-accent group-hover:scale-110 transition-transform" />
@@ -404,213 +289,6 @@ export default function Testimonials() {
           )}
         </AnimatePresence>
 
-        {/* Modal Form for Adding a Review */}
-        <AnimatePresence>
-          {isFormOpen && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm overflow-y-auto">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="bg-white w-full max-w-lg rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8 border border-brand/10 max-h-[90vh] overflow-y-auto"
-              >
-                {/* Close Button */}
-                <button
-                  onClick={() => setIsFormOpen(false)}
-                  className="absolute top-6 right-6 p-2 text-brand/40 hover:text-brand hover:bg-brand/5 rounded-full transition-colors cursor-pointer"
-                  aria-label="Close"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-
-                <div className="flex items-center space-x-3 mb-6">
-                  <div className="w-10 h-10 rounded-2xl bg-brand/5 flex items-center justify-center text-brand">
-                    <MessageSquarePlus className="w-5 h-5 text-accent" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-brand">Share Your Review</h4>
-                    <p className="text-xs text-brand/60">Help future study abroad aspirants with your feedback</p>
-                  </div>
-                </div>
-
-                {error && (
-                  <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-600 text-xs rounded-xl font-medium">
-                    {error}
-                  </div>
-                )}
-
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  {/* Name Input */}
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-brand/70 mb-1.5">
-                      Your Full Name <span className="text-red-500">*</span>
-                    </label>
-                    <div className="relative">
-                      <User className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-brand/30" />
-                      <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="e.g. Ananya Reddy"
-                        className="w-full pl-10 pr-4 py-3 bg-brand-light/30 border border-brand/10 rounded-xl text-sm font-medium text-brand placeholder:text-brand/30 focus:outline-none focus:border-accent focus:bg-white transition-all"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  {/* Destination Country */}
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-brand/70 mb-1.5">
-                      Destination Country <span className="text-red-500">*</span>
-                    </label>
-                    <select
-                      value={country}
-                      onChange={(e) => setCountry(e.target.value)}
-                      className="w-full px-4 py-3 bg-brand-light/30 border border-brand/10 rounded-xl text-sm font-medium text-brand focus:outline-none focus:border-accent focus:bg-white transition-all cursor-pointer"
-                    >
-                      {COUNTRIES_LIST.map((c) => (
-                        <option key={c} value={c}>
-                          Study in {c}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* Rating Selector */}
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-brand/70 mb-1.5">
-                      Rating <span className="text-red-500">*</span>
-                    </label>
-                    <div className="flex items-center space-x-2 bg-brand-light/20 p-3 rounded-xl border border-brand/5">
-                      <div className="flex space-x-1">
-                        {[1, 2, 3, 4, 5].map((starVal) => {
-                          const activeRating = hoverRating || rating;
-                          return (
-                            <button
-                              type="button"
-                              key={starVal}
-                              onClick={() => setRating(starVal)}
-                              onMouseEnter={() => setHoverRating(starVal)}
-                              onMouseLeave={() => setHoverRating(0)}
-                              className="p-1 focus:outline-none cursor-pointer transition-transform hover:scale-125"
-                            >
-                              <Star
-                                className={`w-6 h-6 ${
-                                  starVal <= activeRating
-                                    ? 'text-orange-400 fill-orange-400'
-                                    : 'text-gray-300'
-                                }`}
-                              />
-                            </button>
-                          );
-                        })}
-                      </div>
-                      <span className="text-xs font-bold text-brand ml-2">
-                        {rating === 5 && 'Excellent! (5/5)'}
-                        {rating === 4 && 'Very Good (4/5)'}
-                        {rating === 3 && 'Good (3/5)'}
-                        {rating === 2 && 'Fair (2/5)'}
-                        {rating === 1 && 'Poor (1/5)'}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Optional Image Upload */}
-                  <div>
-                    <div className="flex items-center justify-between mb-1.5">
-                      <label className="block text-xs font-bold uppercase tracking-wider text-brand/70">
-                        Upload Profile / Review Photo <span className="text-brand/40 font-normal lowercase">(optional)</span>
-                      </label>
-                      <span className="text-[10px] text-brand/40">Cloudinary Powered</span>
-                    </div>
-
-                    {previewUrl ? (
-                      <div className="flex items-center space-x-4 p-3 bg-brand-light/30 border border-brand/10 rounded-xl">
-                        <img
-                          src={previewUrl}
-                          alt="Preview"
-                          className="w-12 h-12 rounded-full object-cover border border-brand/20 shadow-sm"
-                        />
-                        <div className="flex-1 min-w-0">
-                          <p className="text-xs font-bold text-brand truncate">
-                            {selectedFile?.name || 'Uploaded Photo'}
-                          </p>
-                          <p className="text-[10px] text-brand/50">Ready to upload</p>
-                        </div>
-                        <button
-                          type="button"
-                          onClick={removeSelectedImage}
-                          className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors cursor-pointer"
-                          title="Remove photo"
-                        >
-                          <X className="w-4 h-4" />
-                        </button>
-                      </div>
-                    ) : (
-                      <label className="flex flex-col items-center justify-center p-4 border-2 border-dashed border-brand/15 hover:border-accent bg-brand-light/20 rounded-xl cursor-pointer transition-all hover:bg-brand-light/40 group">
-                        <div className="flex items-center space-x-2 text-brand/60 group-hover:text-brand">
-                          <Upload className="w-4 h-4 text-accent" />
-                          <span className="text-xs font-semibold">Click to select photo</span>
-                        </div>
-                        <span className="text-[10px] text-brand/40 mt-1">PNG, JPG, WEBP up to 5MB (Optional)</span>
-                        <input
-                          type="file"
-                          accept="image/*"
-                          onChange={handleFileChange}
-                          className="hidden"
-                        />
-                      </label>
-                    )}
-                  </div>
-
-                  {/* Review Text */}
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-brand/70 mb-1.5">
-                      Your Experience & Feedback <span className="text-red-500">*</span>
-                    </label>
-                    <textarea
-                      rows={4}
-                      value={text}
-                      onChange={(e) => setText(e.target.value)}
-                      placeholder="Share your visa experience, how M5 Visa Advisors guided you, or advice for fellow aspirants..."
-                      className="w-full p-4 bg-brand-light/30 border border-brand/10 rounded-xl text-sm text-brand placeholder:text-brand/30 focus:outline-none focus:border-accent focus:bg-white transition-all resize-none"
-                      required
-                    />
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex items-center justify-end space-x-3 pt-2">
-                    <button
-                      type="button"
-                      onClick={() => setIsFormOpen(false)}
-                      className="px-5 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-brand/60 hover:text-brand hover:bg-brand/5 transition-colors cursor-pointer"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="inline-flex items-center space-x-2 bg-brand text-white hover:bg-brand/90 px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-md disabled:opacity-50 cursor-pointer"
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 className="w-3.5 h-3.5 animate-spin text-accent" />
-                          <span>{isUploadingImage ? 'Uploading Image...' : 'Saving Review...'}</span>
-                        </>
-                      ) : (
-                        <>
-                          <span>Submit Review</span>
-                          <Send className="w-3.5 h-3.5 text-accent" />
-                        </>
-                      )}
-                    </button>
-                  </div>
-                </form>
-              </motion.div>
-            </div>
-          )}
-        </AnimatePresence>
-
         {/* Reviews Container - Horizontal Carousel or Scrollable Grid */}
         {isLoading ? (
           <div className="flex items-center justify-center py-16 bg-white/50 rounded-3xl border border-brand/5">
@@ -627,7 +305,7 @@ export default function Testimonials() {
               Be the first student to share your visa success story with M5 Visa Advisors!
             </p>
             <button
-              onClick={() => setIsFormOpen(true)}
+              onClick={() => window.dispatchEvent(new CustomEvent('open-review-modal'))}
               className="inline-flex items-center space-x-2 bg-brand text-white hover:bg-brand/90 px-6 py-3 rounded-full font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer"
             >
               <MessageSquarePlus className="w-4 h-4 text-accent" />
@@ -661,7 +339,7 @@ export default function Testimonials() {
 
                           {review.isCustom ? (
                             <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 uppercase tracking-widest">
-                              Verified Student
+                              {review.country?.toLowerCase().includes('tourist') ? 'Verified Client' : 'Verified Student'}
                             </span>
                           ) : (
                             <Quote className="w-8 h-8 text-brand/10" />
@@ -699,7 +377,7 @@ export default function Testimonials() {
                           )}
                           <div>
                             <div className="font-bold text-brand text-sm">{review.name}</div>
-                            <div className="text-xs text-brand/50 font-medium">Study in {review.country}</div>
+                            <div className="text-xs text-brand/50 font-medium">{formatReviewSubtitle(review.country)}</div>
                           </div>
                         </div>
 
@@ -739,7 +417,7 @@ export default function Testimonials() {
 
                           {review.isCustom ? (
                             <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 uppercase tracking-widest">
-                              Verified Student
+                              {review.country?.toLowerCase().includes('tourist') ? 'Verified Client' : 'Verified Student'}
                             </span>
                           ) : (
                             <Quote className="w-8 h-8 text-brand/10" />
@@ -776,7 +454,7 @@ export default function Testimonials() {
                           )}
                           <div>
                             <div className="font-bold text-brand text-sm">{review.name}</div>
-                            <div className="text-xs text-brand/50 font-medium">Study in {review.country}</div>
+                            <div className="text-xs text-brand/50 font-medium">{formatReviewSubtitle(review.country)}</div>
                           </div>
                         </div>
 
