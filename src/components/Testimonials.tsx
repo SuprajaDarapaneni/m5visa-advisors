@@ -189,7 +189,7 @@ export default function Testimonials() {
               <span className="text-xs font-bold text-accent uppercase tracking-widest">Success Stories</span>
             </div>
             <h3 className="text-3xl md:text-5xl font-bold text-brand uppercase tracking-tight">
-              What Our Students Say
+              What Our Clients Say
             </h3>
             <div className="flex items-center space-x-3 mt-3 text-sm text-brand/70">
               <div className="flex items-center text-orange-400">
