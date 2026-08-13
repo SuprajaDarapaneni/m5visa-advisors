@@ -59,7 +59,7 @@ export default function Navbar() {
                 className="hidden sm:flex bg-amber-500 hover:bg-amber-600 text-white px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider items-center space-x-1 cursor-pointer transition-transform hover:scale-105 shadow-sm"
               >
                 <Star className="w-3 h-3 fill-white text-white" />
-                <span>Write Review</span>
+                <span>Write A Review</span>
               </button>
 
               <div className="flex items-center space-x-2.5">
@@ -202,7 +202,7 @@ export default function Navbar() {
               className="bg-amber-500 hover:bg-amber-600 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-[0.15em] flex items-center space-x-1.5 shadow-md hover:shadow-lg transition-all cursor-pointer border border-transparent hover:border-white/20"
             >
               <Star className="w-3.5 h-3.5 fill-white text-white" />
-              <span>Write Review</span>
+              <span>Write A Review</span>
             </button>
 
             <a 
