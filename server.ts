@@ -2,7 +2,7 @@ import express from "express";
 import path from "path";
 import mongoose from "mongoose";
 import { v2 as cloudinary } from "cloudinary";
-
+import cors from "cors";
 const app = express();
 
 const allowedOrigins = [
