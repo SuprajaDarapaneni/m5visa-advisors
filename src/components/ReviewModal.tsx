@@ -120,7 +120,7 @@ export default function ReviewModal() {
     if (previewUrl) {
       setIsUploadingImage(true);
       try {
-        const uploadRes = await fetch('/api/upload', {
+        const uploadRes = await fetch('https://m5visa-advisors.onrender.com/api/upload', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ image: previewUrl }),
@@ -150,7 +150,7 @@ export default function ReviewModal() {
     };
 
     try {
-      const res = await fetch('/api/reviews', {
+      const res = await fetch('https://m5visa-advisors.onrender.com/api/reviews', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(reviewData),
