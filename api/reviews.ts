@@ -48,7 +48,17 @@ const reviewSchema = new mongoose.Schema(
   }
 );
 
-const Review = mongoose.models.Review || mongoose.model('Review', reviewSchema);
+export interface IReview {
+  name: string;
+  country: string;
+  rating: number;
+  text: string;
+  image?: string;
+  date?: string;
+  createdAt?: Date;
+}
+
+const Review = (mongoose.models.Review as mongoose.Model<IReview>) || mongoose.model<IReview>('Review', reviewSchema);
 
 // ============================================================
 // DB CONNECTION CACHE (Vercel serverless – reuse connection)

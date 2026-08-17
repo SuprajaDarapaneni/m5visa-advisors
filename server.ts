@@ -35,13 +35,11 @@ app.use(
   })
 );
 
-app.options("*", cors());
-
 // ============================================================
 // CONFIGURATION
 // ============================================================
 
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT) || 3000;
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -196,9 +194,19 @@ const reviewSchema = new mongoose.Schema(
   }
 );
 
+export interface IReview {
+  name: string;
+  country: string;
+  rating: number;
+  text: string;
+  image?: string;
+  date?: string;
+  createdAt?: Date;
+}
+
 const Review =
-  mongoose.models.Review ||
-  mongoose.model("Review", reviewSchema);
+  (mongoose.models.Review as mongoose.Model<IReview>) ||
+  mongoose.model<IReview>("Review", reviewSchema);
 
 // ============================================================
 // HEALTH CHECK

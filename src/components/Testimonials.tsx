@@ -13,32 +13,32 @@ export interface ReviewItem {
   isCustom?: boolean;
 }
 
-const DEFAULT_REVIEWS: ReviewItem[] = [
-  {
-    id: 'default-1',
-    name: 'Nikitha',
-    country: 'USA',
-    rating: 5,
-    text: 'M5 Visa Advisors made my application process for the USA incredibly smooth. Their attention to detail on my SOP was a game changer.',
-    date: 'Recently'
-  },
-  {
-    id: 'default-2',
-    name: 'Divya',
-    country: 'USA',
-    rating: 5,
-    text: 'I was worried about my USA visa interview, but the mock sessions with M5 Visa Advisors experts gave me the confidence I needed.',
-    date: 'Recently'
-  },
-  {
-    id: 'default-3',
-    name: 'Praneetha',
-    country: 'UK',
-    rating: 5,
-    text: 'From IELTS prep to post-arrival support in the UK, M5 Visa Advisors was with me every step. Highly recommended for any aspirant.',
-    date: 'Recently'
-  }
-];
+// const DEFAULT_REVIEWS: ReviewItem[] = [
+//   {
+//     id: 'default-1',
+//     name: 'Nikitha',
+//     country: 'USA',
+//     rating: 5,
+//     text: 'M5 Visa Advisors made my application process for the USA incredibly smooth. Their attention to detail on my SOP was a game changer.',
+//     date: 'Recently'
+//   },
+//   {
+//     id: 'default-2',
+//     name: 'Divya',
+//     country: 'USA',
+//     rating: 5,
+//     text: 'I was worried about my USA visa interview, but the mock sessions with M5 Visa Advisors experts gave me the confidence I needed.',
+//     date: 'Recently'
+//   },
+//   {
+//     id: 'default-3',
+//     name: 'Praneetha',
+//     country: 'UK',
+//     rating: 5,
+//     text: 'From IELTS prep to post-arrival support in the UK, M5 Visa Advisors was with me every step. Highly recommended for any aspirant.',
+//     date: 'Recently'
+//   }
+// ];
 
 const STUDY_COUNTRIES = [
   'USA',
