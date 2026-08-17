@@ -199,7 +199,7 @@ export default function Testimonials() {
               </div>
               <span className="font-bold text-brand">{averageRating} / 5.0</span>
               <span className="text-brand/40">•</span>
-              <span>Based on {totalReviewsCount} student reviews</span>
+              <span>Based on {totalReviewsCount} client reviews</span>
             </div>
           </div>
 
